@@ -3,7 +3,7 @@
 
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>MedMe</title>
+  <title>Try Us Out</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -72,16 +72,16 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#about">ABOUT</a>
+            <a href="MedME.html">ABOUT</a>
           </li>
           <li>
-            <a href="#services">TRY US OUT</a>
+            <a href="TryUsOut.html">TRY US OUT</a>
           </li>
           <li>
-            <a href="#portfolio">SIGN IN</a>
+            <a href="SignIn.html">SIGN IN</a>
           </li>
           <li>
-            <a href="#pricing">MY PROFILE</a>
+            <a href="MyProfile.html">MY PROFILE</a>
           </li>
         </ul>
       </div>
@@ -89,65 +89,46 @@
   </nav>
 
   <div class="jumbotron text-center">
-    <!--<h1>MedMe</h1>-->
-    <img src="assets/images/logo2.png" alt="LOGO">
-    </a>
-    <!--<p>We're here for you!.</p>-->
-    <p>
-      <i>When you don't know what meds you take...... but you
-        <i>DO</i> know what you take them for!</i>
-    </p>
-
-    <form>
-      <div class="input-group">
-        <input type="text" class="form-control" size="10" placeholder="Enter your medication here! --- Tylenol, Cholesterol, etc..."
-          required>
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-submit">Submit</button>
-        </div>
-      </div>
-      <!-- <div class="track-group">
-        <button class="btn btn-sm btn-warning">
-          <span class="glyphicon glyphicon-refresh spinning"></span> Tracking...    
-      </button>
-        </div>
-      </div> -->
-       <div class="found-med">
-        <p>Great News! We've found the
-          <span style="color:black;font-weight:bolder;font-size:50px;">Lipitor</span> medication that you are taking!</p>
-      </div>
-      <div class="join-here">
-        <div class="input-group-btn">
-          <p>Sign up for a FREE account and start tracking today!
-            <button type="button" class="btn btn-primary btn-lg">Try us Out!</button>
-          </p>
-
-        </div>
-      </div>
-    </form>
+       <img src="assets/images/logo2.png" alt="LOGO"></a>
   </div>
 
   <!-- Container (About Section) -->
   <div id="about" class="container-fluid">
     <div class="row">
-      <div class="col-sm-12">
-        <h3>About
-          <i>Med</i>
-          <b>ME</b>
-        </h3>
-        <h4>Dosage Maintenance and Administration</h4>
-        <p> At MedME we manage your DRUGS. Enter the information from your pharmacy's prescription label and we will create 
-          a medicinal schedule showing a picture of your tablet, your medication name, your dosage amount and the time that 
-          you are to take the medicine. We'll alert you of any known drug interactions between your prescriptions and any 
-          known side effects.
-          The great part of Medme is that we remind you of when you need to "take your meds" and at what doseage by a text 
-          or email. Great for those who care for the elderly. We can help you find a pharmacy near you.</p>
-        
+      <div class="col-sm-12 col-sm-offset-5">
+        <h3>Let's get started!</h3>
       </div>
-      <div class="col-sm-12"><h4>"Matthew Wright" from Philly says "This app is awesome - I feel like I have alzhiemers, I get a new experience every time!"</h4>
-    </div>
     </div>
   </div>
+  <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title">Add Your Prescription Medication Here</h1>
+          </div>
+          <div class="panel-body">
+            <form>
+              <div class="form-group">
+                <label for="drug-name">Prescription or "DRUG" name</label>
+                <input class="form-control" id="drugName" type="text" placeholder="ie. Tylenol...">
+              </div>
+              <div class="form-group">
+                <label for="dosage">Dosage Prescribed</label>
+                <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
+              </div>
+              <div class="form-group">
+                <label for="time-taken">Time Medicine is Taken (HH:MM)</label>
+                <input class="form-control" id="timeTaken" type="text" placeholder="ie. 15:30...">
+              </div>
+              <div class="form-group">
+                <label for="how-often">How often Do you Take your Meds?</label>
+                <input class="form-control" id="howOften" type="number" placeholder="ie. twice daily...">
+              </div>
+              <button class="btn btn-primary" id="addTrain" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
   
       <!-- Indicators -->
@@ -160,7 +141,7 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <h4>"The first computer dates back to Adam and Eve. It was an Apple with limited memory, just one byte. And then everything crashed."
+          <h4>
             
           </h4>
         </div>
