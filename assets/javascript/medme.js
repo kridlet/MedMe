@@ -1,11 +1,14 @@
+
+
+
+
 $("#submitProfile").on("click", function(event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
     // Storing the artist name
     var zipCode = $("validationCustom05").val().trim();
 
-    // Running the searchBandsInTown function (passing in the artist as an argument)
-    searchBandsInTown(inputArtist);
+    
   });
 
 var settings = {
