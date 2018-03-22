@@ -5,12 +5,12 @@
 $("#submitProfile").on("click", function(event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
-    // Storing the artist name
+    // Storing the zipCode  NOT USING THIS YET....THIS VARIABLE WILL BE PLUGGED INTO THE URL LATER
     var zipCode = $("validationCustom05").val().trim();
 
     
   });
-
+//Yelp protocol for API requests
 var settings = {
     "async": true,
     "crossDomain": true,
