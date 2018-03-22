@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
+
   <title>My Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -93,85 +93,82 @@
     <img src="assets/images/logo2.png" alt="LOGO">
     </a>
     <!--<p>We're here for you!.</p>-->
-    <p>
-      <i>When you don't know what meds you take...... but you
-        <i>DO</i> know what you take them for!</i>
-    </p>
+    <h1><i>Medication Dashboard</h1>
+  </div>
+  <br>
+  <br>
 
     <form>
-      <div class="input-group">
-        <input type="text" class="form-control" size="10" placeholder="Enter your medication here! --- Tylenol, Cholesterol, etc..."
-          required>
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-submit">Submit</button>
-        </div>
-      </div>
-      <!-- <div class="track-group">
-        <button class="btn btn-sm btn-warning">
-          <span class="glyphicon glyphicon-refresh spinning"></span> Tracking...    
-      </button>
-        </div>
-      </div> -->
-       <div class="found-med">
-        <p>Great News! We've found the
-          <span style="color:black;font-weight:bolder;font-size:50px;">Lipitor</span> medication that you are taking!</p>
-      </div>
-      <div class="join-here">
-        <div class="input-group-btn">
-          <p>Sign up for a FREE account and start tracking today!
-            <button type="button" class="btn btn-primary btn-lg">Try us Out!</button>
-          </p>
+      <form>
+        <form class="needs-validation" novalidate>
+          <div class="form-row">
+            <div class="col-md-2">
+              <label for="medName">Medication Name</label>
+              <input type="text" class="form-control" id="medName" placeholder="medName" required>
+              <div class="valid-feedback">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <label for="dosage">Dosage</label>
+              <input type="text" class="form-control" id="medDose" placeholder="medDose" required>
+              <div class="valid-feedback">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <label for="medTime">Time Taken</label>
+              <input type="text" class="form-control" id="medTime" placeholder="medTime" required>
+              <div class="valid-feedback">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <label for="noOfTimes"># per day</label>
+              <input type="text" class="form-control" id="timesTaken" placeholder="timesTaken" required>
+              <div class="valid-feedback">
+              </div>
+            </div>
+            <div class="col-md-3 mb-2">
+              <label for="medTime">Interactions</label>
+              <input type="text" class="form-control" id="interact" placeholder="interactions" required>
+              <div class="valid-feedback">
+              </div>
+            </div>
+            <div class="col-md-3 mb-2">
+              <label for="noOfTimes">Side Effects</label>
+              <input type="text" class="form-control" id="sideEffects" placeholder="sideEffects" required>
+              <div class="valid-feedback">
+              </div>
+            </div>
+             
+             
+              
+        </form>
+       
 
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <!-- Container (About Section) -->
-  <div id="about" class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12">
-        <h3>About
-          <i>Med</i>
-          <b>ME</b>
-        </h3>
-        <h4>Dosage Maintenance and Administration</h4>
-        <p> At MedME we manage your DRUGS. Enter the information from your pharmacy's prescription label and we will create 
-          a medicinal schedule showing a picture of your tablet, your medication name, your dosage amount and the time that 
-          you are to take the medicine. We'll alert you of any known drug interactions between your prescriptions and any 
-          known side effects.
-          The great part of Medme is that we remind you of when you need to "take your meds" and at what doseage by a text 
-          or email. Great for those who care for the elderly. We can help you find a pharmacy near you.</p>
         
-      </div>
-      <div class="col-sm-12"><h4>"Matthew Wright" from Philly says "This app is awesome - I feel like I have alzhiemers, I get a new experience every time!"</h4>
-    </div>
-    </div>
-  </div>
 
-  
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <h4>"The first computer dates back to Adam and Eve. It was an Apple with limited memory, just one byte. And then everything crashed."
-            
-          </h4>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <h4>"The first computer dates back to Adam and Eve. It was an Apple with limited memory, just one byte. And then
+              everything crashed."
+
+            </h4>
+          </div>
+
         </div>
-        
-      </div>
 
-      
-    </div>
+
+        </div>
   </div>
 
-  
+
 
   <script>
     $(document).ready(function () {
