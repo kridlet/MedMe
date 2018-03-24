@@ -13,6 +13,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <link href='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQueryUI.min.css'
+    rel="stylesheet">
 
   <style>
     @keyframes slide {
@@ -89,7 +91,8 @@
   </nav>
 
   <div class="jumbotron text-center">
-       <img src="assets/images/logo2.png" alt="LOGO"></a>
+    <img src="assets/images/logo2.png" alt="LOGO">
+    </a>
   </div>
 
   <!-- Container (About Section) -->
@@ -101,60 +104,63 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-lg-6 col-lg-offset-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="panel-title">Add Your Prescription Medication Here</h1>
-          </div>
-          <div class="panel-body">
-            <form>
-              <div class="form-group">
-                <label for="drug-name">Prescription or "DRUG" name</label>
-                <input class="form-control" id="drugName" type="text" placeholder="ie. Tylenol...">
-              </div>
-              <div class="form-group">
-                <label for="dosage">Dosage Prescribed</label>
-                <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
-              </div>
-              <div class="form-group">
-                <label for="time-taken">Time Medicine is Taken (HH:MM)</label>
-                <input class="form-control" id="timeTaken" type="text" placeholder="ie. 15:30...">
-              </div>
-              <div class="form-group">
-                <label for="how-often">How often Do you Take your Meds?</label>
-                <input class="form-control" id="howOften" type="number" placeholder="ie. twice daily...">
-              </div>
-              <button class="btn btn-primary" id="addTrain" type="submit">Submit</button>
-            </form>
-          </div>
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Add Your Prescription Medication Here</h1>
+        </div>
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label for="drug-name">Prescription or "DRUG" name</label>
+              <input class="form-control" id="drugName" type="text" placeholder="ie. Tylenol...">
+            </div>
+            <div class="form-group">
+              <label for="dosage">Dosage Prescribed</label>
+              <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
+            </div>
+            <div class="form-group">
+              <label for="time-taken">Time Medicine is Taken (HH:MM)</label>
+              <input class="form-control" id="timeTaken" type="text" placeholder="ie. 15:30...">
+            </div>
+            <div class="form-group">
+              <label for="how-often">How often Do you Take your Meds?</label>
+              <input class="form-control" id="howOften" type="number" placeholder="ie. twice daily...">
+            </div>
+            <button class="btn btn-primary" id="addTrain" type="submit">Submit</button>
+          </form>
         </div>
       </div>
-
-  
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <h4>
-            
-          </h4>
-        </div>
-        
-      </div>
-
-      
     </div>
+
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h4>
+
+        </h4>
+      </div>
+
+    </div>
+
+
+  </div>
   </div>
 
-  
+
+
+  <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQuery.min.js'></script>
 
   <script>
+
     $(document).ready(function () {
       // Add smooth scrolling to all links in navbar + footer link
       $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
@@ -189,6 +195,23 @@
         });
       });
     })
+
+    // Autocomplete Prescription or DRUG
+    new Def.Autocompleter.Search('drugName',
+      'https://clin-table-search.lhc.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS,RXCUIS');
+
+    // Creates empty dosage list until Prescription or DRUG is selected
+    new Def.Autocompleter.Prefetch('dosage', []);
+
+    // Creates dosage list after Prescription or DRUG is select
+    Def.Autocompleter.Event.observeListSelections('drugName', function () {
+      var drugField = $('#drugName')[0];
+      var drugName = drugField.value;
+      var drugAutocomp = drugField.autocomp;
+      var strengths = drugAutocomp.getItemExtraData(drugName)['STRENGTHS_AND_FORMS'];
+      if (strengths)
+        $('#dosage')[0].autocomp.setListAndField(strengths);
+    });
   </script>
 
 </body>
