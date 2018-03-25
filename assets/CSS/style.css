@@ -196,3 +196,30 @@ footer .glyphicon {
     from { -webkit-transform: rotate(0deg); }
     to { -webkit-transform: rotate(360deg); }
 }
+.well{
+    
+    padding:0;
+    border:0;
+    background-color: #659dbd;
+    border: transparent;
+    border-style:none;
+    box-shadow: none;
+ }
+ #medhead{
+     font-size: 30px;
+     padding:0;
+ }
+ #myMeds{
+     font-weight: bold;
+     color:black;
+     font-style: italic;
+     
+ }
+ #label{
+     font-weight: bold;
+     color: black;
+ }
+ #table,th ,td{
+     border-spacing: 1px;
+     padding: 10px;
+ }
