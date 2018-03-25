@@ -65,8 +65,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!--<a class="navbar-brand" href="#myPage">Logo</a>-->
-
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -74,169 +72,92 @@
             <a href="index.html">ABOUT</a>
           </li>
           <li>
-            <a href="tryUsOut.html">TRY US OUT</a>
+            <a href="tryusout.html">TRY US OUT</a>
           </li>
           <li>
-            <a href="signIn.html">SIGN IN</a>
+            <a href="signin.html">SIGN IN</a>
           </li>
           <li>
-            <a href="myProfile.html">MY PROFILE</a>
+            <a href="myprofile.html">MY PROFILE</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
   <div class="jumbotron text-center">
-    <img src="assets/images/logo2.png" alt="LOGO"></a>
-   
-    <form>
-      <form class="needs-validation" novalidate>
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom01">First name</label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
-            <div class="valid-feedback">
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom02">Last name</label>
-            <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required>
-            <div class="valid-feedback">
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationCustomUsername">Username</label>
-            <!-- <div class="input-group"> -->
-              <!-- <div class="input-group-prepend"></div>
-                <span class="input-group-text" id="inputGroupPrepend">@</span>
-              </div> -->
-              <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend"
-                required>
-              <div class="invalid-feedback">
-                Please choose a username.
+    <img src="assets/images/logo2.png" alt="LOGO">
+    </a>
+    <div class="container">
+      <h2 class="well">Registration Form</h2>
+      <div class="col-lg-12 well">
+        <div class="row">
+          <form>
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-6 form-group">
+                  <label>First Name</label>
+                  <input type="text" id="firstName" placeholder="Enter First Name Here.." class="form-control">
+                </div>
+                <div class="col-sm-6 form-group">
+                  <label>Last Name</label>
+                  <input type="text" id="lastName"placeholder="Enter Last Name Here.." class="form-control">
+                </div>
               </div>
-            <!-- </div> -->
-          </div>
+              <div class="form-group">
+                <label>Address</label>
+                <textarea id="address" placeholder="Enter Address Here.." rows="3" class="form-control"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-sm-4 form-group">
+                  <label>City</label>
+                  <input type="text" id="city" placeholder="Enter City Name Here.." class="form-control">
+                </div>
+                <div class="col-sm-4 form-group">
+                  <label>State</label>
+                  <input type="text" id= "state" placeholder="Enter State Name Here.." class="form-control">
+                </div>
+                <div class="col-sm-4 form-group">
+                  <label>Zip</label>
+                  <input type="text" id="zip" placeholder="Enter Zip Code Here.." class="form-control">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-4 form-group">
+                  <label>Email Address</label>
+                  <input type="email" id="email" placeholder="Enter Email Address Here.." class="form-control">
+                </div>
+                <div class="col-sm-4 form-group">
+                  <label>New User Name</label>
+                  <input type="text" id="userName"placeholder="Enter New User Name Here.." class="form-control">
+                </div>
+                <div class="col-sm-4 form-group">
+                  <label>New Password</label>
+                  <input type="text" id="password" placeholder="Enter New Password Here.." class="form-control">
+                </div>
+              </div>
+              <a  id="regSubmit" class="btn btn-primary btn-lg" href="myprofile.html">Finished</a> 
+            </div>
+          </form>
         </div>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="validationCustom03">City</label>
-            <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationCustom04">State</label>
-            <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationCustom05">Zip</label>
-            <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-            <div class="invalid-feedback">
-              Please provide a valid zip.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">
-              You must agree before submitting.
-            </div>
-          </div>
-        </div>
-        <button class="btn btn-primary" id="submitProfile" type="submit">Submit form</button>
-      </form>
+      </div>
+    </div>
+
 
   </div>
   <div id="about" class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <h4>Disclaimer:</h4>
-          <p> The information on this site is not intended or implied to be a substitute for professional 
-            medical advice, diagnosis or treatment. All content, including text, graphics, images and 
-            information, contained on or available through this web site is for general information purposes 
-            only. MedME makes no representation and assumes no responsibility for 
-            the accuracy of information contained on or available through this web site, and such information 
-            is subject to change without notice. You are encouraged to confirm any information obtained from 
-            or through this web site with other sources, and review all information regarding any medical 
-            condition or treatment with your physician. NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY 
-            SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ ON OR ACCESSED THROUGH THIS WEB SITE.</p>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Disclaimer:</h4>
+        <p> The information on this site is not intended or implied to be a substitute for professional medical advice, diagnosis
+          or treatment. All content, including text, graphics, images and information, contained on or available through
+          this web site is for general information purposes only. MedME makes no representation and assumes no responsibility
+          for the accuracy of information contained on or available through this web site, and such information is subject
+          to change without notice. You are encouraged to confirm any information obtained from or through this web site
+          with other sources, and review all information regarding any medical condition or treatment with your physician.
+          NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ
+          ON OR ACCESSED THROUGH THIS WEB SITE.</p>
 
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  </div>
-  </div>
-<script src="assets/javascript/medme.js"></script>
-  <script>
-
-    $(document).ready(function () {
-      // Add smooth scrolling to all links in navbar + footer link
-      $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-
-          // Store hash
-          var hash = this.hash;
-
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 900, function () {
-
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
-
-      $(window).scroll(function () {
-        $(".slideanim").each(function () {
-          var pos = $(this).offset().top;
-
-          var winTop = $(window).scrollTop();
-          if (pos < winTop + 600) {
-            $(this).addClass("slide");
-          }
-        });
-      });
-    })
-      // COMMENTED THIS SECTION OUT FOR TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      // (function () {
-      //   'use strict';
-      //   window.addEventListener('load', function () {
-      //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      //     var forms = document.getElementsByClassName('needs-validation');
-      //     // Loop over them and prevent submission
-      //     var validation = Array.prototype.filter.call(forms, function (form) {
-      //       form.addEventListener('submit', function (event) {
-      //         if (form.checkValidity() === false) {
-      //           event.preventDefault();
-      //           event.stopPropagation();
-      //         }
-      //         form.classList.add('was-validated');
-      //       }, false);
-      //     });
-      //   }, false);
-      // })();
-
-  </script>
 
 </body>
 
