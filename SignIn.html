@@ -5,13 +5,29 @@
   <title>Sign In</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- MedMe Styles -->
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <!-- MedMe Scripts -->
+  <script src="assets/javascript/medme-firebase.js"></script>
 
   <style>
     @keyframes slide {
@@ -42,7 +58,7 @@
         margin: 25px 0;
       }
       .btn-lg {
-        width: 100%;
+        width: 10%;
         margin-bottom: 35px;
       }
     }
@@ -51,6 +67,18 @@
       .logo {
         font-size: 150px;
       }
+    }
+
+    /* input[type=text]:focus {
+    border: 3px solid #555;
+} */
+
+    fieldset {
+      width: 50%;
+    }
+
+    input {
+      width: 50px;
     }
   </style>
 </head>
@@ -65,8 +93,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!--<a class="navbar-brand" href="#myPage">Logo</a>-->
-
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -74,114 +100,96 @@
             <a href="index.html">ABOUT</a>
           </li>
           <li>
-            <a href="tryUsOut.html">TRY US OUT</a>
+            <a href="tryusout.html">TRY US OUT</a>
           </li>
           <li>
-            <a href="signIn.html">SIGN IN</a>
+            <a href="signin.html">SIGN IN</a>
           </li>
           <li>
-            <a href="myProfile.html">MY PROFILE</a>
+            <a href="myprofile.html">MY PROFILE</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
   <div class="jumbotron text-center">
-    <img src="assets/images/logo2.png" alt="LOGO"></a>
-   
-    <form>
-      <form class="needs-validation" novalidate>
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom01">First name</label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
-            <div class="valid-feedback">
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom02">Last name</label>
-            <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required>
-            <div class="valid-feedback">
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationCustomUsername">Username</label>
-            <!-- <div class="input-group"> -->
-              <!-- <div class="input-group-prepend"></div>
-                <span class="input-group-text" id="inputGroupPrepend">@</span>
-              </div> -->
-              <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend"
-                required>
-              <div class="invalid-feedback">
-                Please choose a username.
-              </div>
-            <!-- </div> -->
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="validationCustom03">City</label>
-            <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationCustom04">State</label>
-            <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationCustom05">Zip</label>
-            <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-            <div class="invalid-feedback">
-              Please provide a valid zip.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">
-              You must agree before submitting.
-            </div>
-          </div>
-        </div>
-        <button class="btn btn-primary" id="submitProfile" type="submit">Submit form</button>
-      </form>
-
+    <img src="assets/images/logo2.png" class="logo" alt="LOGO">
+    </a>
   </div>
+
+
+  <form id="registration" method="post">
+    <div class="form-group" id="update-user-profile">
+      <fieldset>
+        <legend>Register Account</legend>
+
+        <label class="control-label" for="email">Email:</label>
+        <input class="form-control text-input" id="email" name="email" type="email" placeholder="name@email.com" required>
+
+        <label class="control-label" for="password">Password:</label>
+        <input class="form-control text-input" id="password" name="password" type="password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+          title="Please include a minimum of 6 characters, with at least 1 uppercase, 1 lowercase, and 1 numeric character."
+          placeholder="••••••" required>
+
+        <label class="control-label" for="password-confirm">Confirm Password</label>
+        <input class="form-control text-input" id="passwordConf" name="passConf" type="password" required placeholder="••••••">
+
+        <label class="control-label" for="first-name">First Name:</label>
+        <input class="form-control text-input" id="first-name" name="firstname" required placeholder="Jane">
+
+        <label class="control-label" for="last-name">Last Name:</label>
+        <input class="form-control text-input" id="last-name" name="lastname" required placeholder="Doe">
+
+        <label class="control-label" for="address">Address:</label>
+        <input class="form-control text-input" id="address" name="address" required placeholder="123 Walnut">
+
+        <label class="control-label" for="city">City:</label>
+        <input class="form-control text-input" id="city" required placeholder="Philadelphia">
+
+        <label class="control-label" for="state">State:</label>
+        <input class="form-control text-input-small" name="state" id="state" required placeholder="PA">
+
+        <label class="control-label" for="zip">Zip:</label>
+        <input class="form-control text-input-small" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5" title="5 digit zip code"
+          placeholder="19106" required>
+
+        <label class="control-label" for="phone">Phone:</label>
+        <input class="form-control text-input-small" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+          placeholder="215-555-1234" title="215-555-1234" required>
+
+        <label class="control-label" for="terms-accepted">I agree to terms and conditions:</label>
+        <input id="terms-accepted" name="terms" type="checkbox" title="You must agree to the MedMe terms and conditions to proceed."
+          required>
+        <br />
+        <button type="submit" class="btn btn-primary pill" id="btn-passwd-login">Create Account</button>
+
+
+      </fieldset>
+    </div>
+  </form>
   <div id="about" class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <h4>Disclaimer:</h4>
-          <p> The information on this site is not intended or implied to be a substitute for professional 
-            medical advice, diagnosis or treatment. All content, including text, graphics, images and 
-            information, contained on or available through this web site is for general information purposes 
-            only. MedME makes no representation and assumes no responsibility for 
-            the accuracy of information contained on or available through this web site, and such information 
-            is subject to change without notice. You are encouraged to confirm any information obtained from 
-            or through this web site with other sources, and review all information regarding any medical 
-            condition or treatment with your physician. NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY 
-            SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ ON OR ACCESSED THROUGH THIS WEB SITE.</p>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Disclaimer:</h4>
+        <p> The information on this site is not intended or implied to be a substitute for professional medical advice, diagnosis
+          or treatment. All content, including text, graphics, images and information, contained on or available through
+          this web site is for general information purposes only. MedME makes no representation and assumes no responsibility
+          for the accuracy of information contained on or available through this web site, and such information is subject
+          to change without notice. You are encouraged to confirm any information obtained from or through this web site
+          with other sources, and review all information regarding any medical condition or treatment with your physician.
+          NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ
+          ON OR ACCESSED THROUGH THIS WEB SITE.</p>
 
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+      </div>
+    </div>
   </div>
-  </div>
-<script src="assets/javascript/medme.js"></script>
   <script>
-
     $(document).ready(function () {
       // Add smooth scrolling to all links in navbar + footer link
       $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
@@ -216,26 +224,25 @@
         });
       });
     })
-      // COMMENTED THIS SECTION OUT FOR TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      // (function () {
-      //   'use strict';
-      //   window.addEventListener('load', function () {
-      //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      //     var forms = document.getElementsByClassName('needs-validation');
-      //     // Loop over them and prevent submission
-      //     var validation = Array.prototype.filter.call(forms, function (form) {
-      //       form.addEventListener('submit', function (event) {
-      //         if (form.checkValidity() === false) {
-      //           event.preventDefault();
-      //           event.stopPropagation();
-      //         }
-      //         form.classList.add('was-validated');
-      //       }, false);
-      //     });
-      //   }, false);
-      // })();
-
+    // COMMENTED THIS SECTION OUT FOR TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    // (function () {
+    //   'use strict';
+    //   window.addEventListener('load', function () {
+    //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //     var forms = document.getElementsByClassName('needs-validation');
+    //     // Loop over them and prevent submission
+    //     var validation = Array.prototype.filter.call(forms, function (form) {
+    //       form.addEventListener('submit', function (event) {
+    //         if (form.checkValidity() === false) {
+    //           event.preventDefault();
+    //           event.stopPropagation();
+    //         }
+    //         form.classList.add('was-validated');
+    //       }, false);
+    //     });
+    //   }, false);
+    // })();
   </script>
 
 </body>
