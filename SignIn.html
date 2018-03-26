@@ -5,13 +5,29 @@
   <title>Sign In</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- MedMe Styles -->
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <!-- MedMe Scripts -->
+  <script src="assets/javascript/medme-firebase.js"></script>
 
   <style>
     @keyframes slide {
@@ -57,16 +73,13 @@
     border: 3px solid #555;
 } */
 
-
-    fieldset{
+    fieldset {
       width: 50%;
     }
 
-    input{
+    input {
       width: 50px;
     }
-
-    
   </style>
 </head>
 
@@ -103,135 +116,83 @@
   </nav>
 
   <div class="jumbotron text-center">
-    <img src="assets/images/logo2.png" alt="LOGO"></a>
+    <img src="assets/images/logo2.png" alt="LOGO">
+    </a>
+  </div>
 
+
+  <form id="registration" method="post">
     <div class="form-group" id="update-user-profile">
+      <fieldset>
+        <legend>Register Account</legend>
 
-        <fieldset>
-            <legend>Sample Form</legend>
+        <label class="control-label" for="email">Email:</label>
+        <input class="form-control" id="email" name="email" type="email" placeholder="name@email.com" required>
 
-            <label for="email">Email</label>
-            <input class="form-control" id="email" name="email" type="email" placeholder="name@email.com" required>
+        <label class="control-label" for="password">Password:</label>
+        <input class="form-control" id="password" name="password" type="password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+          title="Please include a minimum of 6 characters, with at least 1 uppercase, 1 lowercase, and 1 numeric character."
+          placeholder="••••••" required>
 
-            <label for="password">Password:</label>
-            <input class="form-control" id="password" name="password" minlength="6" placeholder="6-10  characters"
-                required>
+        <label class="control-label" for="password-confirm">Confirm Password</label>
+        <input class="form-control" id="passwordConf" name="passConf" type="password" required placeholder="••••••">
 
-            <label for="passwordConf">Confirm Password:</label>
-            <input class="form-control" id="passwordConf" name="passConf" required>
+        <label class="control-label" for="first-name">First Name:</label>
+        <input class="form-control" id="first-name" name="firstname" required placeholder="Jane">
 
-            <label for="first-name">First name:</label>
-            <input class="form-control" id="first-name" name="firstname" required>
+        <label class="control-label" for="last-name">Last Name:</label>
+        <input class="form-control" id="last-name" name="lastname" required placeholder="Doe">
 
-            <label for="last-name">Last name:</label>
-            <input class="form-control" id="last-name" name="lastname" required>
+        <label class="control-label" for="address">Address:</label>
+        <input class="form-control" id="address" name="address" required placeholder="123 Walnut">
 
-            <label for="address">Street Address:</label>
-            <input class="form-control" id="address" name="address" required>
+        <label class="control-label" for="city">City:</label>
+        <input class="form-control" id="city" required placeholder="Philadelphia">
 
-            <label for="city">City:</label>
-            <input class="form-control" id="city" required>
+        <label class="control-label" for="state">State:</label>
+        <input class="form-control" name="state" id="state" required placeholder="PA">
 
-            <label for="state">State:</label>
+        <label class="control-label" for="zip">Zip:</label>
+        <input class="form-control" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5" title="5 digit zip code"
+          placeholder="19106" required>
 
-            <select class="form-control" id="state" name="state" width="20px">
-                <option value="">Choose from dropdown</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="DC">District Of Columbia</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="ID">Idaho</option>
-                <option value="IL">Illinois</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="KS">Kansas</option>
-                <option value="KY">Kentucky</option>
-                <option value="LA">Louisiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="MS">Mississippi</option>
-                <option value="MO">Missouri</option>
-                <option value="MT">Montana</option>
-                <option value="NE">Nebraska</option>
-                <option value="NV">Nevada</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NM">New Mexico</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="ND">North Dakota</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="OR">Oregon</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="SD">South Dakota</option>
-                <option value="TN">Tennessee</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WA">Washington</option>
-                <option value="WV">West Virginia</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY">Wyoming</option>
-            </select>
+        <label class="control-label" for="phone">Phone:</label>
+        <input class="form-control" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+          placeholder="215-555-1234" title="215-555-1234" required>
 
-            <label for="zip">Zip Code:</label>
-            <input class="form-control" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5"
-                title="Zip Code" required>
+        <label class="control-label" for="terms-accepted">I agree to terms and conditions:</label>
+        <input id="terms-accepted" name="terms" type="checkbox" title="You must agree to the MedMe terms and conditions to proceed."
+          required>
+        <br />
+        <button type="submit" class="btn btn-primary pill" id="btn-passwd-login">Create Account</button>
 
-            <label for="phone">Phone:</label>
-            <input class="form-control" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="123-456-7890"
-                required>
 
-            <label for="terms-accepted">Terms Accepted:</label>
-            <input class="form-control" id="terms-accepted" name="terms" type="checkbox" required>
-            <br />
-
-            <a class="btn btn-primary" id="btn-passwd-login">Submit</a>
-
-        </fieldset>
-    
-  
-  </div>
+      </fieldset>
+    </div>
+  </form>
   <div id="about" class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <h4>Disclaimer:</h4>
-          <p> The information on this site is not intended or implied to be a substitute for professional 
-            medical advice, diagnosis or treatment. All content, including text, graphics, images and 
-            information, contained on or available through this web site is for general information purposes 
-            only. MedME makes no representation and assumes no responsibility for 
-            the accuracy of information contained on or available through this web site, and such information 
-            is subject to change without notice. You are encouraged to confirm any information obtained from 
-            or through this web site with other sources, and review all information regarding any medical 
-            condition or treatment with your physician. NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY 
-            SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ ON OR ACCESSED THROUGH THIS WEB SITE.</p>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Disclaimer:</h4>
+        <p> The information on this site is not intended or implied to be a substitute for professional medical advice, diagnosis
+          or treatment. All content, including text, graphics, images and information, contained on or available through
+          this web site is for general information purposes only. MedME makes no representation and assumes no responsibility
+          for the accuracy of information contained on or available through this web site, and such information is subject
+          to change without notice. You are encouraged to confirm any information obtained from or through this web site
+          with other sources, and review all information regarding any medical condition or treatment with your physician.
+          NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ
+          ON OR ACCESSED THROUGH THIS WEB SITE.</p>
 
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+      </div>
+    </div>
   </div>
-  </div>
-<script src="assets/javascript/medme.js"></script>
   <script>
-
     $(document).ready(function () {
       // Add smooth scrolling to all links in navbar + footer link
       $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
@@ -266,28 +227,26 @@
         });
       });
     })
-      // COMMENTED THIS SECTION OUT FOR TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      // (function () {
-      //   'use strict';
-      //   window.addEventListener('load', function () {
-      //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      //     var forms = document.getElementsByClassName('needs-validation');
-      //     // Loop over them and prevent submission
-      //     var validation = Array.prototype.filter.call(forms, function (form) {
-      //       form.addEventListener('submit', function (event) {
-      //         if (form.checkValidity() === false) {
-      //           event.preventDefault();
-      //           event.stopPropagation();
-      //         }
-      //         form.classList.add('was-validated');
-      //       }, false);
-      //     });
-      //   }, false);
-      // })();
-
+    // COMMENTED THIS SECTION OUT FOR TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    // (function () {
+    //   'use strict';
+    //   window.addEventListener('load', function () {
+    //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //     var forms = document.getElementsByClassName('needs-validation');
+    //     // Loop over them and prevent submission
+    //     var validation = Array.prototype.filter.call(forms, function (form) {
+    //       form.addEventListener('submit', function (event) {
+    //         if (form.checkValidity() === false) {
+    //           event.preventDefault();
+    //           event.stopPropagation();
+    //         }
+    //         form.classList.add('was-validated');
+    //       }, false);
+    //     });
+    //   }, false);
+    // })();
   </script>
-
 </body>
 
 </html>
