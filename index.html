@@ -12,6 +12,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <link href='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQueryUI.min.css'
+    rel="stylesheet">
 
   <style>
     @keyframes slide {
@@ -65,7 +67,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!--<a class="navbar-brand" href="#myPage">Logo</a>-->
 
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -74,13 +75,13 @@
             <a href="#about">ABOUT</a>
           </li>
           <li>
-            <a href="tryUsOut.html">TRY US OUT</a>
+            <a href="tryusout.html">TRY US OUT</a>
           </li>
           <li>
-            <a href="signIn.html">SIGN IN</a>
+            <a href="signin.html">SIGN IN</a>
           </li>
           <li>
-            <a href="myProfile.html">MY PROFILE</a>
+            <a href="myprofile.html">MY PROFILE</a>
           </li>
         </ul>
       </div>
@@ -88,10 +89,8 @@
   </nav>
 
   <div class="jumbotron text-center">
-    <!--<h1>MedMe</h1>-->
     <img src="assets/images/logo2.png" alt="LOGO">
     </a>
-    <!--<p>We're here for you!.</p>-->
     <p>
       <i>When you don't know what meds you take...... but you
         <i>DO</i> know what you take them for!</i>
@@ -101,7 +100,7 @@
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
           <div class="input-group">
-            <input type="text" id="med" class="form-control" placeholder="Enter your medication here! --- Tylenol, Cholesterol, etc..." />
+            <input type="text" id="med" class="form-control" placeholder="Enter your medication here! --- Tylenol, Lipitor, etc..." />
             <span class="input-group-btn">
               <button class="btn btn-primary btn-sm" type="button" onclick="myFunction()">Submit</button>
             </span>
@@ -109,15 +108,13 @@
         </div>
       </div>
       <div class="found-med">
-        <!-- <p>Great News! We've found the -->
-          <!-- <span style="color:black;font-weight:bolder;font-size:50px;">Lipitor</span> medication that you are taking!</p> -->
-          <span id="medspan"></span>
-          <!--tie together in javascript-->
+        <span id="medspan"></span>
       </div>
+      <br>
       <div class="join-here">
         <div class="input-group-btn">
           <p>Sign up for a FREE account and start tracking today!
-            <button type="button" class="btn btn-primary btn-lg">Try us Out!</button>
+            <a class="btn btn-primary btn-lg" href="tryusout.html">Try us Out!</a>
           </p>
 
         </div>
@@ -145,10 +142,7 @@
         <div class="col-lg-9 col-lg-offset-2">
           <div class="input-group">
             <br>
-
-            <h4>"Matthew Wright" from Philly says "This app is awesome - I feel like I have alzheimers, I get a new experience
-
- 
+            <h4>"Matthew wright" from Philly says "This app is awesome - I feel like I have alzheimers, I get a new experience
           </div>
         </div>
       </div>
@@ -156,79 +150,36 @@
   </div>
   </div>
 
-
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <h4>"one"</h4>
+      <h4>.</h4>
     </div>
   </div>
   </div>
   </div>
+  <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQuery.min.js'></script>
   <script src="assets/javascript/medme.js"></script>
 
   <script>
-    $(document).ready(function () {
-      // Add smooth scrolling to all links in navbar + footer link
-      $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-
-          // Store hash
-          var hash = this.hash;
-
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 900, function () {
-
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
-
-      $(window).scroll(function () {
-        $(".slideanim").each(function () {
-          var pos = $(this).offset().top;
-
-          var winTop = $(window).scrollTop();
-          if (pos < winTop + 600) {
-            $(this).addClass("slide");
-          }
-        });
-      });
-    })
-  </script>
-  <script>
-    function myFunction(){
+    new Def.Autocompleter.Search('med',
+      'https://clin-table-search.lhc.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS,RXCUIS');
+    function myFunction() {
       var med = document.getElementById("med").value;
       var medspan = document.getElementById("medspan");
       var span1 = document.createElement("span");
-      span1.setAttribute("style","color:black;font-weight:bolder;font-size:20px;");
-      span1.textContent="Great News! We've found the ";
+      span1.setAttribute("style", "color:black;font-weight:bolder;font-size:20px;");
+      span1.textContent = "Great News! We've found the ";
       medspan.append(span1);
       var span2 = document.createElement("span");
-      span2.setAttribute("style","color:black;font-weight:bolder;font-size:40px;");
-      span2.textContent=med;
+      span2.setAttribute("style", "color:black;font-weight:bolder;font-size:40px;");
+      span2.textContent = med;
       medspan.append(span2);
       var span3 = document.createElement("span");
-      span3.setAttribute("style","color:black;font-weight:bolder;font-size:20px;");
-      span3.textContent=" medication that you are taking!";
+      span3.setAttribute("style", "color:black;font-weight:bolder;font-size:20px;");
+      span3.textContent = " medication that you are taking!";
       medspan.append(span3);
-  
-   }
-
+    }
   </script>
 
 </body>
