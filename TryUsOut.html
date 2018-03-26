@@ -12,6 +12,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <link href='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQueryUI.min.css'
+    rel="stylesheet">
+    
   <style>
     @keyframes slide {
       0% {
@@ -137,37 +140,7 @@
         </div>
       </div>
     </div>
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <h4></h4>
-      </div>
-        </div>
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <label for="drug-name">Prescription or "DRUG" name</label>
-              <input class="form-control" id="drugName" type="text" placeholder="ie. Tylenol...">
-            </div>
-            <div class="form-group">
-              <label for="dosage">Dosage Prescribed</label>
-              <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
-            </div>
-            <div class="form-group">
-              <label for="time-taken">Time Medicine is Taken (HH:MM)</label>
-              <input class="form-control" id="timeTaken" type="text" placeholder="ie. 15:30...">
-            </div>
-            <div class="form-group">
-              <label for="how-often">How often Do you Take your Meds?</label>
-              <input class="form-control" id="howOften" type="number" placeholder="ie. twice daily...">
-            </div>
-            <button class="btn btn-primary" id="addTrain" type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-
+    
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -194,41 +167,6 @@
   <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQuery.min.js'></script>
 
   <script>
-
-    $(document).ready(function () {
-      // Add smooth scrolling to all links in navbar + footer link
-      $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-
-          // Store hash
-          var hash = this.hash;
-
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 900, function () {
-
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
-
-      $(window).scroll(function () {
-        $(".slideanim").each(function () {
-          var pos = $(this).offset().top;
-
-          var winTop = $(window).scrollTop();
-          if (pos < winTop + 600) {
-            $(this).addClass("slide");
-          }
-        });
-      });
-    })
 
     // Autocomplete Prescription or DRUG
     new Def.Autocompleter.Search('drugName',
