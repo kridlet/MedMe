@@ -5,57 +5,32 @@
   <title>Sign In</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- MedMe Styles -->
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
-
-  <style>
-    @keyframes slide {
-      0% {
-        opacity: 0;
-        transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0%);
-      }
-    }
-
-    @-webkit-keyframes slide {
-      0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      .col-sm-4 {
-        text-align: center;
-        margin: 25px 0;
-      }
-      .btn-lg {
-        width: 100%;
-        margin-bottom: 35px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .logo {
-        font-size: 150px;
-      }
-    }
-  </style>
+  <!-- MedMe Scripts -->
+  <script src="assets/javascript/medme-firebase.js"></script>
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage">
 
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -85,66 +60,60 @@
     </div>
   </nav>
   <div class="jumbotron text-center">
-    <img src="assets/images/logo2.png" alt="LOGO">
+    <img src="assets/images/logo2.png" class="logo" alt="LOGO">
     </a>
-    <div class="container">
-      <h2 class="well">Registration Form</h2>
-      <div class="col-lg-12 well">
-        <div class="row">
-          <form>
-            <div class="col-sm-12">
-              <div class="row">
-                <div class="col-sm-6 form-group">
-                  <label>First Name</label>
-                  <input type="text" id="firstName" placeholder="Enter First Name Here.." class="form-control">
-                </div>
-                <div class="col-sm-6 form-group">
-                  <label>Last Name</label>
-                  <input type="text" id="lastName"placeholder="Enter Last Name Here.." class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Address</label>
-                <textarea id="address" placeholder="Enter Address Here.." rows="3" class="form-control"></textarea>
-              </div>
-              <div class="row">
-                <div class="col-sm-4 form-group">
-                  <label>City</label>
-                  <input type="text" id="city" placeholder="Enter City Name Here.." class="form-control">
-                </div>
-                <div class="col-sm-4 form-group">
-                  <label>State</label>
-                  <input type="text" id= "state" placeholder="Enter State Name Here.." class="form-control">
-                </div>
-                <div class="col-sm-4 form-group">
-                  <label>Zip</label>
-                  <input type="text" id="zip" placeholder="Enter Zip Code Here.." class="form-control">
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-4 form-group">
-                  <label>Email Address</label>
-                  <input type="email" id="email" placeholder="Enter Email Address Here.." class="form-control">
-                </div>
-                <div class="col-sm-4 form-group">
-                  <label>New User Name</label>
-                  <input type="text" id="userName"placeholder="Enter New User Name Here.." class="form-control">
-                </div>
-                <div class="col-sm-4 form-group">
-                  <label>New Password</label>
-                  <input type="text" id="password" placeholder="Enter New Password Here.." class="form-control">
-                </div>
-              </div>
-              <a  id="regSubmit" class="btn btn-primary btn-lg" href="myprofile.html">Finished</a> 
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-
   </div>
+  <div class="alert-area"></div>
+
+  <form id="registration" method="post">
+    <div class="form-group" id="update-user-profile">
+      <fieldset>
+        <legend>Register Account</legend>
+
+        <label class="control-label" for="email">Email:</label>
+        <input class="form-control text-input" id="email" name="email" type="email" placeholder="name@email.com" required>
+
+        <label class="control-label" for="password">Password:</label>
+        <input class="form-control text-input" id="password" name="password" type="password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+          title="Please include a minimum of 6 characters, with at least 1 uppercase, 1 lowercase, and 1 numeric character."
+          placeholder="••••••" required>
+
+        <label class="control-label" for="password-confirm">Confirm Password</label>
+        <input class="form-control text-input" id="passwordConf" name="passConf" type="password" required placeholder="••••••">
+
+        <label class="control-label" for="first-name">First Name:</label>
+        <input class="form-control text-input" id="first-name" name="firstname" required placeholder="Jane">
+
+        <label class="control-label" for="last-name">Last Name:</label>
+        <input class="form-control text-input" id="last-name" name="lastname" required placeholder="Doe">
+
+        <label class="control-label" for="address">Address:</label>
+        <input class="form-control text-input" id="address" name="address" required placeholder="123 Walnut">
+
+        <label class="control-label" for="city">City:</label>
+        <input class="form-control text-input" id="city" required placeholder="Philadelphia">
+
+        <label class="control-label" for="state">State:</label>
+        <input class="form-control text-input-small" name="state" id="state" required placeholder="PA">
+
+        <label class="control-label" for="zip">Zip:</label>
+        <input class="form-control text-input-small" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5"
+          title="5 digit zip code" placeholder="19106" required>
+
+        <label class="control-label" for="phone">Phone:</label>
+        <input class="form-control text-input-small" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+          placeholder="215-555-1234" title="215-555-1234" required>
+
+        <label class="control-label" for="terms-accepted">I agree to terms and conditions:</label>
+        <input id="terms-accepted" name="terms" type="checkbox" title="You must agree to the MedMe terms and conditions to proceed."
+          required>
+        <br />
+        <button type="submit" class="btn btn-primary pill" id="btn-passwd-login">Create Account</button>
+
+
+      </fieldset>
+    </div>
+  </form>
   <div id="about" class="container-fluid">
     <div class="row">
       <div class="col-sm-12">
@@ -157,8 +126,14 @@
           with other sources, and review all information regarding any medical condition or treatment with your physician.
           NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ
           ON OR ACCESSED THROUGH THIS WEB SITE.</p>
-
-
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      checkLoginStatus("create");
+    });
+  </script>
 </body>
 
 </html>

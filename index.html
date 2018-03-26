@@ -12,6 +12,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <link href='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQueryUI.min.css'
+    rel="stylesheet">
 
   <style>
     @keyframes slide {
@@ -156,9 +158,12 @@
   </div>
   </div>
   </div>
+  <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQuery.min.js'></script>
   <script src="assets/javascript/medme.js"></script>
 
   <script>
+    new Def.Autocompleter.Search('med',
+      'https://clin-table-search.lhc.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS,RXCUIS');
     function myFunction() {
       var med = document.getElementById("med").value;
       var medspan = document.getElementById("medspan");
@@ -174,9 +179,7 @@
       span3.setAttribute("style", "color:black;font-weight:bolder;font-size:20px;");
       span3.textContent = " medication that you are taking!";
       medspan.append(span3);
-
     }
-
   </script>
 
 </body>
