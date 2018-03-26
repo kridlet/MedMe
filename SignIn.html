@@ -113,7 +113,7 @@
     </div>
   </nav>
   <div class="jumbotron text-center">
-    <img src="assets/images/logo2.png" alt="LOGO">
+    <img src="assets/images/logo2.png" class="logo" alt="LOGO">
     </a>
   </div>
 
@@ -124,37 +124,37 @@
         <legend>Register Account</legend>
 
         <label class="control-label" for="email">Email:</label>
-        <input class="form-control" id="email" name="email" type="email" placeholder="name@email.com" required>
+        <input class="form-control text-input" id="email" name="email" type="email" placeholder="name@email.com" required>
 
         <label class="control-label" for="password">Password:</label>
-        <input class="form-control" id="password" name="password" type="password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+        <input class="form-control text-input" id="password" name="password" type="password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
           title="Please include a minimum of 6 characters, with at least 1 uppercase, 1 lowercase, and 1 numeric character."
           placeholder="••••••" required>
 
         <label class="control-label" for="password-confirm">Confirm Password</label>
-        <input class="form-control" id="passwordConf" name="passConf" type="password" required placeholder="••••••">
+        <input class="form-control text-input" id="passwordConf" name="passConf" type="password" required placeholder="••••••">
 
         <label class="control-label" for="first-name">First Name:</label>
-        <input class="form-control" id="first-name" name="firstname" required placeholder="Jane">
+        <input class="form-control text-input" id="first-name" name="firstname" required placeholder="Jane">
 
         <label class="control-label" for="last-name">Last Name:</label>
-        <input class="form-control" id="last-name" name="lastname" required placeholder="Doe">
+        <input class="form-control text-input" id="last-name" name="lastname" required placeholder="Doe">
 
         <label class="control-label" for="address">Address:</label>
-        <input class="form-control" id="address" name="address" required placeholder="123 Walnut">
+        <input class="form-control text-input" id="address" name="address" required placeholder="123 Walnut">
 
         <label class="control-label" for="city">City:</label>
-        <input class="form-control" id="city" required placeholder="Philadelphia">
+        <input class="form-control text-input" id="city" required placeholder="Philadelphia">
 
         <label class="control-label" for="state">State:</label>
-        <input class="form-control" name="state" id="state" required placeholder="PA">
+        <input class="form-control text-input-small" name="state" id="state" required placeholder="PA">
 
         <label class="control-label" for="zip">Zip:</label>
-        <input class="form-control" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5" title="5 digit zip code"
+        <input class="form-control text-input-small" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5" title="5 digit zip code"
           placeholder="19106" required>
 
         <label class="control-label" for="phone">Phone:</label>
-        <input class="form-control" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+        <input class="form-control text-input-small" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
           placeholder="215-555-1234" title="215-555-1234" required>
 
         <label class="control-label" for="terms-accepted">I agree to terms and conditions:</label>
