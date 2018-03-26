@@ -12,26 +12,39 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var auth = firebase.auth();
 
-// auto complete states
-$(function () {
-    var availableStates = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
-    $("#state").autocomplete({
-        source: availableStates
-    });
-});
+function checkLoginStatus(createAnon = false) {
+    var user = auth.currentUser;
+    if (user) {
+        // User is signed in.
+    } else {
+        // No user is signed in.
+        if (createAnon === "create") {
+            createAnonUser("tempDrug")
+        }
+    }
+}
 
 // watch for login/logout events
-auth.onAuthStateChanged(user => {
+auth.onAuthStateChanged(function (user) {
     console.log(user);
     if (user) {
         // do things when logged in, like show the logout button and hide the login button
         $("#login-with-credentials").hide();
         $("#logout-user").show();
     } else {
+
         // do things when logged out, like show the login button and hide the logout button
         $("#logout-user").hide();
         $("#login-with-credentials").show();
     }
+});
+
+// auto complete states
+$(function () {
+    var availableStates = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
+    $("#state").autocomplete({
+        source: availableStates
+    });
 });
 
 function createAnonUser(initialDrug) {
@@ -112,7 +125,7 @@ $("#btn-add-drug").click(function () {
 });
 
 //watch for profile update, at which time we transfer anonymous account to a credentialed account
-$(document).on('submit','#registration',function(event){
+$(document).on('submit', '#registration', function (event) {
     console.log("button");
     event.preventDefault();
     // get user details from user input
