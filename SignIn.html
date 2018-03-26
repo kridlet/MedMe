@@ -26,64 +26,9 @@
   <!-- MedMe Styles -->
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
-  <!-- MedMe Scripts -->
-  <script src="assets/javascript/medme-firebase.js"></script>
-
-  <style>
-    @keyframes slide {
-      0% {
-        opacity: 0;
-        transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0%);
-      }
-    }
-
-    @-webkit-keyframes slide {
-      0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      .col-sm-4 {
-        text-align: center;
-        margin: 25px 0;
-      }
-      .btn-lg {
-        width: 10%;
-        margin-bottom: 35px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .logo {
-        font-size: 150px;
-      }
-    }
-
-    /* input[type=text]:focus {
-    border: 3px solid #555;
-} */
-
-    fieldset {
-      width: 50%;
-    }
-
-    input {
-      width: 50px;
-    }
-  </style>
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage">
 
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -115,7 +60,6 @@
   <div class="jumbotron text-center">
     <img src="assets/images/logo2.png" class="logo" alt="LOGO">
     </a>
-  </div>
 
 
   <form id="registration" method="post">
@@ -150,8 +94,8 @@
         <input class="form-control text-input-small" name="state" id="state" required placeholder="PA">
 
         <label class="control-label" for="zip">Zip:</label>
-        <input class="form-control text-input-small" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5" title="5 digit zip code"
-          placeholder="19106" required>
+        <input class="form-control text-input-small" id="zip" name="zip" pattern="[0-9]{5}" size="5" minlength="5" maxlength="5"
+          title="5 digit zip code" placeholder="19106" required>
 
         <label class="control-label" for="phone">Phone:</label>
         <input class="form-control text-input-small" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
@@ -179,72 +123,17 @@
           with other sources, and review all information regarding any medical condition or treatment with your physician.
           NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ
           ON OR ACCESSED THROUGH THIS WEB SITE.</p>
-
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
       </div>
     </div>
   </div>
+
   <script>
     $(document).ready(function () {
-      // Add smooth scrolling to all links in navbar + footer link
-      $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-
-          // Store hash
-          var hash = this.hash;
-
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 900, function () {
-
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
-
-      $(window).scroll(function () {
-        $(".slideanim").each(function () {
-          var pos = $(this).offset().top;
-
-          var winTop = $(window).scrollTop();
-          if (pos < winTop + 600) {
-            $(this).addClass("slide");
-          }
-        });
-      });
-    })
-    // COMMENTED THIS SECTION OUT FOR TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    // (function () {
-    //   'use strict';
-    //   window.addEventListener('load', function () {
-    //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    //     var forms = document.getElementsByClassName('needs-validation');
-    //     // Loop over them and prevent submission
-    //     var validation = Array.prototype.filter.call(forms, function (form) {
-    //       form.addEventListener('submit', function (event) {
-    //         if (form.checkValidity() === false) {
-    //           event.preventDefault();
-    //           event.stopPropagation();
-    //         }
-    //         form.classList.add('was-validated');
-    //       }, false);
-    //     });
-    //   }, false);
-    // })();
+      checkLoginStatus("create");
+    });
   </script>
 
+  
 </body>
 
 </html>
