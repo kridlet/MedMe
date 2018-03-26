@@ -85,7 +85,9 @@ function convertAnonToCredentialedUser(email, password, firstName, lastName, add
                 phone: phone,
                 termsAccepted: Date.now(),
             });
+            $(".alert-area").html("<div class='alert alert-success fade in'>New user account successfully added.</div>");
         }, function (error) {
+            $(".alert-area").html("<div class='alert alert-danger fade in'>" + error.message + "</div>");
             console.log("Error upgrading anonymous account", error);
         });
 }
@@ -110,22 +112,23 @@ $("#btn-add-drug").click(function () {
 });
 
 //watch for profile update, at which time we transfer anonymous account to a credentialed account
-$("#btn-passwd-login").click(function (event) {
+$(document).on('submit','#registration',function(event){
+    console.log("button");
     event.preventDefault();
-   // get user details from user input
-   var email = $("#email").val();
-   var password = $("#password").val();
-   var firstName = $("#first-name").val();
-   var lastName = $("#last-name").val();
-   var address = $("#address").val();
-   var city = $("#city").val();
-   var state = $("#state").val();
-   var zip = $("#zip").val();
-   var phone = $("#phone").val();
-   var termsAccepted = $("#terms-accepted").val();
-   // convert the anonymous account to a credentialed account and fill user profile with input data
-   console.log(email, password, firstName, lastName, address, city, state, zip, phone, termsAccepted);
-   convertAnonToCredentialedUser(email, password, firstName, lastName, address, city, state, zip, phone, termsAccepted);
+    // get user details from user input
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var firstName = $("#first-name").val();
+    var lastName = $("#last-name").val();
+    var address = $("#address").val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+    var zip = $("#zip").val();
+    var phone = $("#phone").val();
+    var termsAccepted = $("#terms-accepted").val();
+    // convert the anonymous account to a credentialed account and fill user profile with input data
+    console.log(email, password, firstName, lastName, address, city, state, zip, phone, termsAccepted);
+    convertAnonToCredentialedUser(email, password, firstName, lastName, address, city, state, zip, phone, termsAccepted);
 });
 
 
