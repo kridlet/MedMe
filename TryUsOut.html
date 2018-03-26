@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Try Us Out</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,9 +12,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
-  <link href='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQueryUI.min.css'
-    rel="stylesheet">
-
   <style>
     @keyframes slide {
       0% {
@@ -59,7 +55,6 @@
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -68,8 +63,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!--<a class="navbar-brand" href="#myPage">Logo</a>-->
-
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -77,25 +70,22 @@
             <a href="index.html">ABOUT</a>
           </li>
           <li>
-            <a href="tryUsOut.html">TRY US OUT</a>
+            <a href="tryusout.html">TRY US OUT</a>
           </li>
           <li>
-            <a href="signIn.html">SIGN IN</a>
+            <a href="signin.html">SIGN IN</a>
           </li>
           <li>
-            <a href="myProfile.html">MY PROFILE</a>
+            <a href="myprofile.html">MY PROFILE</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
   <div class="jumbotron text-center">
     <img src="assets/images/logo2.png" alt="LOGO">
     </a>
   </div>
-
-  <!-- Container (About Section) -->
   <div id="about" class="container-fluid">
     <div class="row">
       <div class="col-sm-12 col-sm-offset-5">
@@ -108,6 +98,50 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h1 class="panel-title">Add Your Prescription Medication Here</h1>
+        </div>
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label for="drug-name">Prescription or "DRUG" name</label>
+              <input class="form-control" id="drugName" type="text" placeholder="ie. Tylenol...">
+            </div>
+            <div class="form-group">
+              <label for="dosage">Dosage Prescribed</label>
+              <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
+            </div>
+            <div class="form-group">
+              <label for="how-often">How often Do you Take your Meds?</label>
+              <select class="form-control" id="howOften">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>As Needed</option>
+              </select>
+            </div>
+            <button class="btn btn-primary btn-lg " id="addDrug" type="submit">Add Another Drug</button>
+            <a id="finished" class="btn btn-primary btn-lg" href="signin.html">Finished</a> 
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h4></h4>
+      </div>
         </div>
         <div class="panel-body">
           <form>
@@ -155,7 +189,7 @@
   </div>
   </div>
 
-
+  </div>
 
   <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQuery.min.js'></script>
 
@@ -213,6 +247,7 @@
         $('#dosage')[0].autocomp.setListAndField(strengths);
     });
   </script>
+
 
 </body>
 
