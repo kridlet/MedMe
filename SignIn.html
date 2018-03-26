@@ -26,6 +26,8 @@
   <!-- MedMe Styles -->
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <!-- MeMe Scripts -->
+  <script src="assets/javascript/medme-firebase.js"></script>
 </head>
 
 <body id="myPage">
@@ -45,23 +47,23 @@
             <a href="index.html">ABOUT</a>
           </li>
           <li>
-            <a href="tryusout.html">TRY US OUT</a>
+            <a href="tryUsOut.html">TRY US OUT</a>
           </li>
           <li>
-            <a href="signin.html">SIGN IN</a>
-          </li>
-          <li>
-            <a href="myprofile.html">MY PROFILE</a>
+            <a href="signIn.html">SIGN IN</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="jumbotron text-center">
-    <img src="assets/images/logo2.png" class="logo" alt="LOGO">
+    <img src="assets/images/logo2.png" alt="LOGO">
     </a>
-
-
+    <h1 id="medhead">
+      <i>Medication Dashboard</i>
+    </h1>
+  </div>
+<div class="alert-area"></div>
   <form id="registration" method="post">
     <div class="form-group" id="update-user-profile">
       <fieldset>
@@ -132,7 +134,6 @@
       checkLoginStatus("create");
     });
   </script>
-
   
 </body>
 
