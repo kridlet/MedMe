@@ -13,31 +13,35 @@ var database = firebase.database();
 var auth = firebase.auth();
 
 function checkLoginStatus(createAnon = false) {
+    console.log("createAnon: " + createAnon);
+    console.log(auth)
     var user = auth.currentUser;
+    console.log(user);
     if (user) {
         // User is signed in.
     } else {
         // No user is signed in.
-        if (createAnon === "create") {
-            createAnonUser("tempDrug")
-        }
+        // if (createAnon === "create") {
+        //     createAnonUser("tempDrug")
+        // }
     }
 }
 
-// watch for login/logout events
-auth.onAuthStateChanged(function (user) {
-    console.log(user);
-    if (user) {
-        // do things when logged in, like show the logout button and hide the login button
-        $("#login-with-credentials").hide();
-        $("#logout-user").show();
-    } else {
+$(document).ready(function () {
+    // watch for login/logout events
+    auth.onAuthStateChanged(function (user) {
+        console.log(user);
+        if (user) {
+            // do things when logged in, like show the logout button and hide the login button
+            console.log("I am: " + user.email);
+        } else {
 
-        // do things when logged out, like show the login button and hide the logout button
-        $("#logout-user").hide();
-        $("#login-with-credentials").show();
-    }
+            // do things when logged out, like show the login button and hide the logout button
+            console.log("I am: no one");
+        }
+    });
 });
+
 
 // auto complete states
 // $(function () {
@@ -79,6 +83,13 @@ function addDrug(drugName, drugDosage, drugFrequency, RxCUI) {
         frequency: drugFrequency,
         RxCUI: RxCUI,
     });
+    if (drugFrequency === "As Needed") {
+        $(".alert-area").html("<div class='alert alert-success fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>" + drugName + " was successfully added.</div>");
+    }
+    else {
+        $(".alert-area").html("<div class='alert alert-success fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>" + drugName + " was successfully added. You will receive text messages to help you remember when to take your medicine.</div>");
+    }
+
 }
 
 function convertAnonToCredentialedUser(email, password, firstName, lastName, address, city, state, zip, phone, termsAccepted) {
@@ -99,9 +110,9 @@ function convertAnonToCredentialedUser(email, password, firstName, lastName, add
                 phone: phone,
                 termsAccepted: Date.now(),
             });
-            $(".alert-area").html("<div class='alert alert-success fade in'>New user account successfully added.</div>");
+            $(".alert-area").html("<div class='alert alert-success fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>New user account successfully added.</div>");
         }, function (error) {
-            $(".alert-area").html("<div class='alert alert-danger fade in'>" + error.message + "</div>");
+            $(".alert-area").html("<div class='alert alert-danger fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>" + error.message + "<br /><br />Try again or <a href='login.html' class='alert-link'>login with an existing account here</a></div>");
             console.log("Error upgrading anonymous account", error);
         });
 }
@@ -168,6 +179,7 @@ $("#btn-login-with-credentials").click(function () {
 });
 
 $("#btn-list-user-drugs").click(function () {
+    console.log("btn-click");
     // Loop through users in order with the forEach() method. The callback
     // provided to forEach() will be called synchronously with a DataSnapshot
     // for each child:
@@ -177,6 +189,8 @@ $("#btn-list-user-drugs").click(function () {
             snapshot.forEach(function (childSnapshot) {
                 // childData is the actual contents of the child
                 var childData = childSnapshot.val();
+                var drugRow = '<tr><td>' + childData.name + '</td><td>' + childData.dosage + '</td><td>' + childData.frequency + '</td><td>' + childData.frequency + '</td><td><a class="btn btn-small btn-danger delete" id="' + childData.RxCUI + '">Delete</a></td></tr>';
+                $("#drugtable").append(drugRow)
                 console.log(childData.name);
                 console.log(childData.dosage);
                 console.log(childData.frequency);
@@ -185,7 +199,15 @@ $("#btn-list-user-drugs").click(function () {
         });
 });
 
-$("#btn-list-drug-interaction").click(function () {
+$(document).on('click', '.btn-remove-drug', function (event) {
+    event.preventDefault();
+    deleteRef = database.ref('users/' + auth.currentUser.uid + '/rx/' + $(this).attr("id"));
+    deleteRef.remove();
+});
+
+$(document).on('click', '#btn-list-drug-interaction', function (event) {
+    event.preventDefault();
+    
     // Loop through users in order with the forEach() method. The callback
     // provided to forEach() will be called synchronously with a DataSnapshot
     // for each child:
@@ -205,12 +227,16 @@ $("#btn-list-drug-interaction").click(function () {
                 url: 'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=' + drugRxCUIs,
                 success: function (data) {
                     console.info(data);
+                    var interactions = "";
+                    $(".alert-area").html("");
                     // loop through interaction type groups - this is specific to the data format of the NIH API response
                     for (i = 0; i < data.fullInteractionTypeGroup.length; i++) {
                         // loop through interaction types - this is specific to the data format of the NIH API response
                         for (j = 0; j < data.fullInteractionTypeGroup[i].fullInteractionType.length; j++) {
                             console.log(data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[0].description);
                             console.log(data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[0].severity);
+                            interactions += interactions + '<br /> <br />' + data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[0].description;
+                            $(".alert-area").append("<div class='alert alert-warning fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>" + data.fullInteractionTypeGroup[i].fullInteractionType[j].interactionPair[0].description + "</div>");
                         }
                     }
                 }

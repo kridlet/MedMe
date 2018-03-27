@@ -73,6 +73,7 @@
       </div>
     </div>
   </div>
+  <div class="alert-area"></div>
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
       <div class="panel panel-default">
@@ -151,9 +152,9 @@
 
     // Creates empty dosage list until Prescription or DRUG is selected
     new Def.Autocompleter.Prefetch('dosage', []);
-var NIHDrugName = '';
-var NIHRxCUI = '';
-var NIHDrugDosage = '';
+    var NIHDrugName = '';
+    var NIHRxCUI = '';
+    var NIHDrugDosage = '';
     // Creates dosage list after Prescription or DRUG is select
     Def.Autocompleter.Event.observeListSelections('drugName', function () {
       console.log( $('#drugName'));
@@ -188,6 +189,9 @@ var NIHDrugDosage = '';
       // add the drug to the user's profile
       console.log(drugName, drugDosage, drugFrequency, drugRxCUI);
       addDrug(drugName, drugDosage, drugFrequency, drugRxCUI);
+      $("#drugName").val('');
+      $("#dosage").val('');
+      $("#drug-frequency").val('');
     });
 
     $(document).ready(function () {

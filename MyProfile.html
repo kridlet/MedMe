@@ -6,56 +6,64 @@
   <title>My Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- MedMe Styles -->
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
-
+  <!-- MeMe Scripts -->
+  <script src="assets/javascript/medme-firebase.js"></script>
 
   <style>
-    @keyframes slide {
-      0% {
-        opacity: 0;
-        transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0%);
-      }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 20;
     }
 
-    @-webkit-keyframes slide {
-      0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      .col-sm-4 {
-        text-align: center;
-        margin: 25px 0;
-      }
-      .btn-lg {
-        width: 100%;
-        margin-bottom: 35px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .logo {
-        font-size: 150px;
-      }
+    .modal {
+      width: 400px;
+      padding: 50px 30px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -300px;
+      margin-bottom: 300px;
+      margin-left: -200px;
+      background-color: #ddd;
+      border-radius: 5px;
+      border: 1px dotted black;
+      text-align: center;
+      z-index: 30;
     }
   </style>
 </head>
+
+</head>
+<!-- a space for a modal -->
+<div class="overlay" id="overlay"></div>
+<!-- the modal -->
+<div class="modal" id="modal"></div>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <nav class="navbar-fixed-top">
@@ -80,95 +88,102 @@
           </li>
         </ul>
       </div>
-    </nav>
-    <div class="jumbotron text-center">
-      <img src="assets/images/logo2.png" alt="LOGO">
-      </a>
-      <h1 id="medhead">
-        <i>Medication Dashboard</i>
-      </h1>
-    </div>
+  </nav>
+  <div class="jumbotron text-center">
+    <img src="assets/images/logo2.png" alt="LOGO">
+    </a>
+    <h1 id="medhead">
+      <i>Medication Dashboard</i>
+    </h1>
+  </div>
+  <div class="alert-area"></div>
   <div id="about" class="container-fluid">
     <div class="row">
       <div class="col-sm-12">
-        <h3 id="myMeds">My Medications</h3>
-        <table style="width:100%">
-          <tr>
-            <th id="label">Medicine Name</th>
-            <th id="label">Dosage</th>
-            <th id="label">Times Taken Daily</th>
-            <th id="label">Side Effects</th>
-
-            <th id="label">Check for Interactions</a>
-            </th>
-          </tr>
-          <tr>
-            <td>
-              <input id="drugName" value="TYLENOL (Oral Pill)" />
-            </td>
-            <td>#dosage</td>
-            <td>#timesTaken</td>
-            <td id='effects'></td>
-            <td>
-              <a id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <input id="drugName" value="LIPITOR (Oral Pill)" />
-            </td>
-            <td>#dosage</td>
-            <td>#timesTaken</td>
-            <td id='effects'></td>
-            <td>
-              <a id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <input id="drugName" value="TUMS (Chewable)" />
-            </td>
-            <td>#dosage</td>
-            <td>#timesTaken</td>
-            <td id='effects'></td>
-            <td>
-              <a id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a>
-            </td>
-          </tr>
+        <table class="table">
+          <caption class="lead">My Medications</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Dosage</th>
+              <th>Doses/Day</th>
+              <th>Last Dose Taken</th>
+              <th>Side Effects</th>
+              <th width="118px">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="drug-table"></tbody>
         </table>
+        <p>
+          <a href="#/add" class="btn btn-success" role="button">Add New Drug</a>
+          <a class="btn btn-warning" style="float: right;" id="btn-list-drug-interaction">Check Interactions</a>
+        </p>
       </div>
     </div>
   </div>
-  <script src="assets/javascript/medme.js"></script>
+
+
+
 
   <script>
+    // hide the overlay and modal
+    $("#overlay").hide();
+    $("#modal").html("hello world");
+    $("#modal").hide();
+    $(document).ready(function () {
+      // watch for login/logout events
+      auth.onAuthStateChanged(function (user) {
+        console.log(user.uid);
+        if (user) {
+          // do things when logged in, like show the logout button and hide the login button
+          var query = database.ref('users/' + auth.currentUser.uid + '/rx').orderByKey();
+          query.on("value", function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+              console.log(childSnapshot);
+              // childData is the actual contents of the child
+              var childData = childSnapshot.val();
+              var key = "T4No04ciH8D7nIsp6OflpZT1i2JC6XLxd8HUnhIc"
+              var searchTerm = childData.RxCUI;
+              console.log(searchTerm)
+              $.ajax({
+                url: "https://api.fda.gov/drug/event.json?api_key=" + key + "&search=rxcui:" +
+                  searchTerm,
+                dataType: "json",
+                success: function (data) {
+                  var sideEffects = "";
+                  for (i = 0; i < data.results.length; i++) {
+                    for (j = 0; j < data.results[i].patient.reaction.length; j++) {
+                      if (sideEffects.length == 0) {
+                        sideEffects += data.results[i].patient.reaction[j].reactionmeddrapt;
+                      } else {
+                        sideEffects += ', ' + data.results[i].patient.reaction[j].reactionmeddrapt;
+                      }
+                    }
+                  }
+
+                  var drugRow = '<tr><td>' + childData.name + '</td><td>' + childData.dosage +
+                    '</td><td>' + childData.frequency +
+                    '</td><td>' + childData.frequency +
+                    '</td><td>' + sideEffects +
+                    '</td><td><div class="btn-group"><a href="map.html" class="btn btn-xs btn-default refill" id="' +
+                    childData.name + '">Refill</a><a class="btn btn-xs btn-danger btn-remove-drug" id="' +
+                    childSnapshot.key + '">Remove</a></div></td></tr>';
+                  $("#drug-table").append(drugRow)
+                },
+                type: 'GET'
+              });
+              //
 
 
-    var key = "T4No04ciH8D7nIsp6OflpZT1i2JC6XLxd8HUnhIc"
-    var searchTerm = document.getElementById("drugName").value
+            });
+          });
+        } else {
 
-    $.ajax({
-
-      url: "https://api.fda.gov/drug/event.json?api_key=" + key + "&search=" + searchTerm + "&count=patient.reaction.reactionmeddrapt.exact",
-      dataType: "json",
-      success: function (data) {
-        for (i = 0; i < 6; i++) {
-          var results = (data.results[i].term)
-          if (data.results[i].term === "DRUG INEFFECTIVE") {
-            results[i].term = ""
-          }
-          else {
-            $("#effects").append(results + " " + "<br>")
-            console.log(data.results[i].term)
-          }
-
+          // do things when logged out, like show the login button and hide the logout button
+          console.log("I am: no one");
         }
-      },
-      type: 'GET'
+      });
     });
-
   </script>
 
 </body>
