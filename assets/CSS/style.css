@@ -232,23 +232,6 @@ footer .glyphicon {
     -webkit-animation: spin2 1s infinite linear;
 }
 
-@keyframes spin {
-    from {
-        transform: scale(1) rotate(0deg);
-    }
-    to {
-        transform: scale(1) rotate(360deg);
-    }
-}
-
-@keyframes spin2 {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-    }
-}
 
 .btn.pill {
     -webkit-border-radius: 16px;
@@ -283,3 +266,20 @@ footer .glyphicon {
      border-spacing: 1px;
      padding: 10px;
  }
+ 
+ @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+  }
