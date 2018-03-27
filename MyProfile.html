@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
 
+
   <style>
     @keyframes slide {
       0% {
@@ -98,36 +99,79 @@
             <th id="label">Dosage</th>
             <th id="label">Times Taken Daily</th>
             <th id="label">Side Effects</th>
-            <th id="label">Check for Interactions</a> </th>
+
+            <th id="label">Check for Interactions</a>
+            </th>
           </tr>
           <tr>
-            <td>#medName</td>
+            <td>
+              <input id="drugName" value="TYLENOL (Oral Pill)" />
+            </td>
             <td>#dosage</td>
             <td>#timesTaken</td>
-            <td>#sideEffects</td>
-            <td><a  id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a></td>
+            <td id='effects'></td>
+            <td>
+              <a id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a>
+            </td>
           </tr>
-          
+
           <tr>
-              <td>#medName</td>
-              <td>#dosage</td>
-              <td>#timesTaken</td>
-              <td>#sideEffects</td>
-              <td><a  id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a></td>
-            </tr>
-           
-            <tr>
-                <td>#medName</td>
-                <td>#dosage</td>
-                <td>#timesTaken</td>
-                <td>#sideEffects</td>
-                <td><a  id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a></td>
-              </tr>
+            <td>
+              <input id="drugName" value="LIPITOR (Oral Pill)" />
+            </td>
+            <td>#dosage</td>
+            <td>#timesTaken</td>
+            <td id='effects'></td>
+            <td>
+              <a id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input id="drugName" value="TUMS (Chewable)" />
+            </td>
+            <td>#dosage</td>
+            <td>#timesTaken</td>
+            <td id='effects'></td>
+            <td>
+              <a id="regSubmit" class="btn btn-primary btn-sm" href="#interactions">Check for Interactions</a>
+            </td>
+          </tr>
         </table>
       </div>
     </div>
   </div>
   <script src="assets/javascript/medme.js"></script>
+
+  <script>
+
+
+    var key = "T4No04ciH8D7nIsp6OflpZT1i2JC6XLxd8HUnhIc"
+    var searchTerm = document.getElementById("drugName").value
+
+    $.ajax({
+
+      url: "https://api.fda.gov/drug/event.json?api_key=" + key + "&search=" + searchTerm + "&count=patient.reaction.reactionmeddrapt.exact",
+      dataType: "json",
+      success: function (data) {
+        for (i = 0; i < 6; i++) {
+          var results = (data.results[i].term)
+          if (data.results[i].term === "DRUG INEFFECTIVE") {
+            results[i].term = ""
+          }
+          else {
+            $("#effects").append(results + " " + "<br>")
+            console.log(data.results[i].term)
+          }
+
+        }
+      },
+      type: 'GET'
+    });
+
+  </script>
+
 </body>
 
 </html>
