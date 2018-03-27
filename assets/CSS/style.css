@@ -163,6 +163,10 @@ h5 {
     color: white;
 }
 
+.navbar-nav>li>a{
+    color: white;
+}
+
 .panel-footer h3 {
     font-size: 32px;
 }
