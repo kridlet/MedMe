@@ -40,12 +40,13 @@ auth.onAuthStateChanged(function (user) {
 });
 
 // auto complete states
-$(function () {
-    var availableStates = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
-    $("#state").autocomplete({
-        source: availableStates
-    });
-});
+// $(function () {
+//     var availableStates = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
+//     $("#state").autocomplete({
+//         source: availableStates
+//     });
+// });
+
 
 function createAnonUser(initialDrug) {
     // sign in an anonymous user
@@ -114,15 +115,15 @@ $("#btn-submit-initial-drug").click(function () {
 });
 
 // watch for add drug request
-$("#btn-add-drug").click(function () {
-    // get drug details from user input
-    var drugName = $("#drug-name").val();
-    var drugDosage = $("#drug-dosage").val();
-    var drugFrequency = $("#drug-frequency").val();
-    var RxCUI = $("#RxCUI").val();
-    // add the drug to the user's profile
-    addDrug(drugName, drugDosage, drugFrequency, RxCUI);
-});
+// $("#btn-add-drug").click(function () {
+//     // get drug details from user input
+//     var drugName = $("#drug-name").val();
+//     var drugDosage = $("#drug-dosage").val();
+//     var drugFrequency = $("#drug-frequency").val();
+//     var RxCUI = $("#RxCUI").val();
+//     // add the drug to the user's profile
+//     addDrug(drugName, drugDosage, drugFrequency, RxCUI);
+// });
 
 //watch for profile update, at which time we transfer anonymous account to a credentialed account
 $(document).on('submit', '#registration', function (event) {

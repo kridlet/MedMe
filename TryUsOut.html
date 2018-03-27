@@ -5,56 +5,33 @@
   <title>Try Us Out</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
-  <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <!-- NIH -->
   <link href='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQueryUI.min.css'
     rel="stylesheet">
-    
-  <style>
-    @keyframes slide {
-      0% {
-        opacity: 0;
-        transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0%);
-      }
-    }
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <!-- MedMe Styles -->
+  <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <!-- MeMe Scripts -->
+  <script src="assets/javascript/medme-firebase.js"></script>
 
-    @-webkit-keyframes slide {
-      0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-      }
-      100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      .col-sm-4 {
-        text-align: center;
-        margin: 25px 0;
-      }
-      .btn-lg {
-        width: 100%;
-        margin-bottom: 35px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .logo {
-        font-size: 150px;
-      }
-    }
-  </style>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -113,8 +90,12 @@
               <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
             </div>
             <div class="form-group">
+              <label for="rxcui">rxcui Prescribed</label>
+              <input class="form-control" id="rxcui" type="text" placeholder="1234552">
+            </div>
+            <div class="form-group">
               <label for="how-often">How often Do you Take your Meds?</label>
-              <select class="form-control" id="howOften">
+              <select class="form-control" id="drug-frequency">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -134,7 +115,7 @@
                 <option>As Needed</option>
               </select>
             </div>
-            <button class="btn btn-primary btn-lg " id="addDrug" type="submit">Add Another Drug</button>
+            <button class="btn btn-primary btn-lg " id="btn-add-drug" type="submit">Add Another Drug</button>
             <a id="finished" class="btn btn-primary btn-lg" href="signin.html">Finished</a> 
           </form>
         </div>
@@ -174,16 +155,52 @@
 
     // Creates empty dosage list until Prescription or DRUG is selected
     new Def.Autocompleter.Prefetch('dosage', []);
-
+var NIHDrugName = '';
+var NIHRxCUI = '';
+var NIHDrugDosage = '';
     // Creates dosage list after Prescription or DRUG is select
     Def.Autocompleter.Event.observeListSelections('drugName', function () {
+      console.log( $('#drugName'));
       var drugField = $('#drugName')[0];
       var drugName = drugField.value;
+      NIHDrugName = drugField.value;
+      console.log (drugName);
       var drugAutocomp = drugField.autocomp;
+      console.log (drugAutocomp);
       var strengths = drugAutocomp.getItemExtraData(drugName)['STRENGTHS_AND_FORMS'];
-      if (strengths)
-        $('#dosage')[0].autocomp.setListAndField(strengths);
+      var rxcui = drugAutocomp.getItemExtraData(drugName)['RXCUIS'];
+
+      console.log (strengths);
+      if (strengths) {
+
+        $('#dosage')[0].autocomp.setListAndField(strengths, rxcui);
+
+      }
     });
+    Def.Autocompleter.Event.observeListSelections('dosage', function(data) {
+      console.log(data);
+      NIHDrugDosage = data.final_val;
+      NIHRxCUI = data.item_code
+      $('#rxcui')[0].value = data.item_code;
+    })
+
+    // watch for add drug request
+    $("#btn-add-drug").click(function () {
+      event.preventDefault();
+      // get drug details from user input
+      var drugName = NIHDrugName;
+      var drugDosage = NIHDrugDosage;
+      var drugFrequency = $("#drug-frequency").val();
+      var drugRxCUI = NIHRxCUI;
+      // add the drug to the user's profile
+      console.log(drugName, drugDosage, drugFrequency, drugRxCUI);
+      addDrug(drugName, drugDosage, drugFrequency, drugRxCUI);
+    });
+
+    $(document).ready(function () {
+      checkLoginStatus("create");
+    });
+
   </script>
 
 
