@@ -90,10 +90,6 @@
               <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
             </div>
             <div class="form-group">
-              <label for="rxcui">rxcui Prescribed</label>
-              <input class="form-control" id="rxcui" type="text" placeholder="1234552">
-            </div>
-            <div class="form-group">
               <label for="how-often">How often Do you Take your Meds?</label>
               <select class="form-control" id="drug-frequency">
                 <option>1</option>
@@ -172,16 +168,13 @@ var NIHDrugDosage = '';
 
       console.log (strengths);
       if (strengths) {
-
         $('#dosage')[0].autocomp.setListAndField(strengths, rxcui);
-
       }
     });
     Def.Autocompleter.Event.observeListSelections('dosage', function(data) {
       console.log(data);
       NIHDrugDosage = data.final_val;
       NIHRxCUI = data.item_code
-      $('#rxcui')[0].value = data.item_code;
     })
 
     // watch for add drug request
