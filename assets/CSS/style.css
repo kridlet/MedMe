@@ -262,6 +262,17 @@ footer .glyphicon {
      font-style: italic;
      
  }
+ #medication{
+    font-family: 'Comfortaa:300', cursive;  
+    font-size:30px; 
+    color:#fBEEC1;
+ }
+ #quote{
+    font-family: 'Comfortaa:300', cursive; 
+    color:black;
+    font-size:30px;
+    
+}
  #label{
      font-weight: bold;
      color: black;
