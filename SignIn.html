@@ -27,29 +27,30 @@
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
   <!-- MeMe Scripts -->
+  <script>
+    var page = '';
+  </script>
   <script src="assets/javascript/medme-firebase.js"></script>
 
   <style>
-  fieldset{
-    margin-left: 500px;
-  }
+    fieldset {
+      margin-left: auto;
+    }
 
-  .text-input, .text-input-small{
-    width: 500px;
-  }
+    .text-input,
+    .text-input-small {
+      width: 500px;
+    }
 
-  legend{
-    font-size: 25px;
-    font-style: bold;
-    text-align: center
-  }
+    legend {
+      font-size: 25px;
+      font-style: bold;
+      text-align: center
+    }
 
-  p{
-    font-size: 10px;
-  }
-  
-  
-  
+    p {
+      font-size: 10px;
+    }
   </style>
 </head>
 
@@ -69,12 +70,7 @@
           <li>
             <a href="index.html">ABOUT</a>
           </li>
-          <li>
-            <a href="tryUsOut.html">TRY US OUT</a>
-          </li>
-          <li>
-            <a href="signIn.html">SIGN IN</a>
-          </li>
+          <li class="menu-signinout-link"></li>
         </ul>
       </div>
     </div>
@@ -86,7 +82,7 @@
       <i>Sign Up</i>
     </h1>
   </div>
-<div class="alert-area"></div>
+  <div class="alert-area"></div>
   <form id="registration" method="post">
     <div class="form-group" id="update-user-profile">
       <fieldset>
@@ -104,16 +100,16 @@
         <input class="form-control text-input" id="passwordConf" name="passConf" type="password" required>
 
         <label class="control-label" for="first-name">First Name:</label>
-        <input class="form-control text-input" id="first-name" name="firstname" required >
+        <input class="form-control text-input" id="first-name" name="firstname" required>
 
         <label class="control-label" for="last-name">Last Name:</label>
-        <input class="form-control text-input" id="last-name" name="lastname" required >
+        <input class="form-control text-input" id="last-name" name="lastname" required>
 
         <label class="control-label" for="address">Street Address:</label>
-        <input class="form-control text-input" id="address" name="address" required >
+        <input class="form-control text-input" id="address" name="address" required>
 
         <label class="control-label" for="city">City:</label>
-        <input class="form-control text-input" id="city" required >
+        <input class="form-control text-input" id="city" required>
 
         <label class="control-label" for="state">State:</label>
         <input class="form-control text-input-small" name="state" id="state" required placeholder="2 letter format">
@@ -125,18 +121,34 @@
         <label class="control-label" for="phone">Phone:</label>
         <input class="form-control text-input-small" id="phone" name="phone" size="12" minlength="12" maxlength="12" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
           placeholder="xxx-xxx-xxxx" title="format 555-555-1234" required>
-<br>
+        <br>
         <label class="control-label" for="terms-accepted">I agree to terms and conditions:</label>
         <br>
         <input id="terms-accepted" name="terms" type="checkbox" title="You must agree to the MedMe terms and conditions to proceed."
           required>
         <br>
-        
-        <button type="submit" class="btn btn-primary pill" id="btn-passwd-login">Create Account</button>
+
+        <button type="submit" class="btn btn-primary pill" id="btn-registration">Create Account</button>
         <br>
         <hr>
 
+      </fieldset>
+    </div>
+  </form>
+  <form id="sign-in" method="post">
+    <div class="form-group" id="update-user-profile">
+      <fieldset>
+        <legend>Sign In</legend>
 
+        <label class="control-label" for="email">Email:</label>
+        <input class="form-control text-input" id="login-email" name="email" type="email" required>
+
+        <label class="control-label" for="password">Password:</label>
+        <input class="form-control text-input" id="login-password" name="password" type="password" minlength="6" required>
+
+        <button type="submit" class="btn btn-primary pill" id="btn-passwd-login">Sign In</button>
+        <br>
+        <hr>
       </fieldset>
     </div>
   </form>
@@ -152,17 +164,11 @@
           with other sources, and review all information regarding any medical condition or treatment with your physician.
           NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ
           ON OR ACCESSED THROUGH THIS WEB SITE.</p>
-          <br>
+        <br>
       </div>
     </div>
   </div>
 
-  <script>
-    $(document).ready(function () {
-      checkLoginStatus("create");
-    });
-  </script>
-  
 </body>
 
 </html>
