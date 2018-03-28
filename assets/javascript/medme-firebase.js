@@ -42,12 +42,13 @@ $(document).ready(function () {
 //     });
 // });
 
-function addDrug(drugName, drugDosage, drugFrequency, RxCUI) {
+function addDrug(drugName, drugDosage, drugFrequency, drugDuration, RxCUI) {
     // add a new drug to the user
     database.ref('users/' + auth.currentUser.uid + '/rx').push().set({
         name: drugName,
         dosage: drugDosage,
         frequency: drugFrequency,
+        duration: drugDuration,
         RxCUI: RxCUI,
     });
     if (drugFrequency === "As Needed") {
