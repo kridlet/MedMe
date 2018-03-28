@@ -34,21 +34,22 @@ $(document).ready(function () {
     });
 });
 
-// auto complete states
-// $(function () {
-//     var availableStates = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
-//     $("#state").autocomplete({
-//         source: availableStates
-//     });
-// });
+//auto complete states
+$(function () {
+    var availableStates = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
+    $("#state").autocomplete({
+        source: availableStates
+    });
+});
 
-function addDrug(drugName, drugDosage, drugFrequency, drugDuration, RxCUI) {
+function addDrug(drugName, drugDosage, drugFrequency, drugDuration, lastDoseTime, RxCUI) {
     // add a new drug to the user
     database.ref('users/' + auth.currentUser.uid + '/rx').push().set({
         name: drugName,
         dosage: drugDosage,
         frequency: drugFrequency,
         duration: drugDuration,
+        lastDoseTime : lastDoseTime,
         RxCUI: RxCUI,
     });
     if (drugFrequency === "As Needed") {
