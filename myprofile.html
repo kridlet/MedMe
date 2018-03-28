@@ -229,7 +229,7 @@
       var drugRxCUI = NIHRxCUI;
       var time = 8 + Math.floor(16 / $("#drug-frequency").val()) + Math.floor(Math.random() * $("#drug-frequency").val());
       time = moment(time, "HH").format("hh:mm a");
-      var lastDoseTime = time;
+      var lastDoseTime =  "Not Reported"; // time;
       // add the drug to the user's profile
       console.log(drugName, drugDosage, drugFrequency, drugDuration, lastDoseTime, drugRxCUI);
       addDrug(drugName, drugDosage, drugFrequency, drugDuration, lastDoseTime, drugRxCUI);
