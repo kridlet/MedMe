@@ -1,7 +1,8 @@
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyC9MDdcy45WokbyKUmzPf93RpeAcKaWcWo",
-    authDomain: "medme-f87ee.firebaseapp.com",
+    authDomain: "medme-f87ee.firebaseapp.com", 
+    authDomain: "http://kridlet.github.io/",
     databaseURL: "https://medme-f87ee.firebaseio.com",
     projectId: "medme-f87ee",
     storageBucket: "medme-f87ee.appspot.com",

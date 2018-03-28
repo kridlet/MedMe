@@ -34,7 +34,7 @@
 
   <style>
     fieldset {
-      margin-left: auto;
+      margin-left: 500px;
     }
 
     .text-input,
@@ -47,10 +47,15 @@
       font-style: bold;
       text-align: center
     }
+    h3{
+      margin-left: 140px;
+    }
 
     p {
       font-size: 10px;
     }
+
+    
   </style>
 </head>
 
@@ -85,8 +90,10 @@
   <div class="alert-area"></div>
   <form id="registration" method="post">
     <div class="form-group" id="update-user-profile">
+
       <fieldset>
-        <legend>Register Account</legend>
+          <h3>Register Account</h3>
+
 
         <label class="control-label" for="email">Email:</label>
         <input class="form-control text-input" id="email" name="email" type="email" placeholder="name@email.com" required>
