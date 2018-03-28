@@ -28,7 +28,7 @@ $(document).ready(function () {
         } else {
             // do things when logged out, like show the login button and hide the logout button
             console.log("I am: no one");
-            $(".menu-signinout-link").html("<a href='signIn.html'>SIGN IN</a>");
+            $(".menu-signinout-link").html("<a href='signin.html'>SIGN IN</a>");
         }
     });
 });

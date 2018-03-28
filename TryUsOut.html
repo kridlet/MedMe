@@ -32,6 +32,26 @@
   <!-- MeMe Scripts -->
   <script src="assets/javascript/medme-firebase.js"></script>
 
+
+  <style>
+      .modal-body .col-sm-2,
+      .modal-body .col-sm-10 {
+          width: 100%
+      }
+
+      .modal-body .control-label {
+          text-align: left;
+      }
+
+      .modal-body .col-sm-offset-2 {
+          margin-left: 15px;
+      }
+
+      #searchResults {
+        z-index: 10000;
+      }
+
+  </style>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -75,104 +95,97 @@
   </div>
   <div class="alert-area"></div>
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h1 class="panel-title"><center>Add Your Personal Medications Here</center></h1>
-        </div>
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <label for="drug-name">Prescription or "DRUG" name</label>
-              <input class="form-control" id="drugName" type="text" placeholder="ie. Tylenol...">
-            </div>
-            <div class="form-group">
-              <label for="dosage">Dosage Prescribed</label>
-              <input class="form-control" id="dosage" type="text" placeholder="ie. 5 mg...">
-            </div>
-            <div class="form-group">
-              <label for="how-often">How often Do you Take your Meds?</label>
-              <select class="form-control" id="drug-frequency">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>As Needed</option>
-              </select>
-            </div>
-            <button class="btn btn-primary btn-lg " id="btn-add-drug" type="submit">Add Another Drug</button>
-            <a id="finished" class="btn btn-primary btn-lg" href="signin.html">Finished</a> 
-          </form>
-        </div>
+      <!-- Button trigger modal -->
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add-drug-modal">
+          Add Prescription
+      </button>
+  
+      <!-- Modal -->
+      <div class="modal fade" id="add-drug-modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">
+                          <span aria-hidden="true">&times;</span>
+                          <span class="sr-only">Close</span>
+                      </button>
+                      <h4 class="modal-title">
+                          Add Prescription
+                      </h4>
+                  </div>
+  
+                  <!-- Modal Body -->
+                  <div class="modal-body">
+  
+                      <div class="form-group">
+                          <label for="rxterms">Prescription or "DRUG" name</label>
+                          <input type="text" id="rxterms" placeholder="ie. Tylenol...">
+                      </div>
+                      <div class="form-group">
+                          <label for="drug-strengths">Dosage Prescribed</label>
+                          <input type="text" id="drug-strengths" placeholder="ie. 5 mg...">
+                      </div>
+                      <div class="form-group">
+                          <label for="rxcui">Dosage Prescribed</label>
+                          <input type="text" id="rxcui" placeholder="RxCUI">
+                      </div>
+                      <div class="form-group">
+                          <label for="how-often">How often Do you Take your Meds?</label>
+                          <select class="form-control" id="drug-frequency">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>As Needed</option>
+                          </select>
+                      </div>
+                  </div>
+  
+                  <!-- Modal Footer -->
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">
+                          Close
+                      </button>
+                      <button type="button" class="btn btn-primary" id="btn-add-drug" type="submit">
+                          Add Prescription
+                      </button>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-    
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <h4>
-
-        </h4>
-      </div>
-
-    </div>
-
-
-  </div>
   </div>
 
-  </div>
-
-  <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQuery.min.js'></script>
+  <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/15.1.1/autocomplete-lhc_jQuery.min.js'></script>
 
   <script>
-
     // Autocomplete Prescription or DRUG
-    new Def.Autocompleter.Search('drugName',
+    new Def.Autocompleter.Search('rxterms',
       'https://clin-table-search.lhc.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS,RXCUIS');
 
     // Creates empty dosage list until Prescription or DRUG is selected
-    new Def.Autocompleter.Prefetch('dosage', []);
+    new Def.Autocompleter.Prefetch('drug-strengths', []);
     var NIHDrugName = '';
     var NIHRxCUI = '';
     var NIHDrugDosage = '';
     // Creates dosage list after Prescription or DRUG is select
-    Def.Autocompleter.Event.observeListSelections('drugName', function () {
-      console.log( $('#drugName'));
-      var drugField = $('#drugName')[0];
+    Def.Autocompleter.Event.observeListSelections('rxterms', function () {
+      console.log($('#rxterms'));
+      var drugField = $('#rxterms')[0];
       var drugName = drugField.value;
       NIHDrugName = drugField.value;
-      console.log (drugName);
+      console.log(drugName);
       var drugAutocomp = drugField.autocomp;
-      console.log (drugAutocomp);
+      console.log(drugAutocomp);
       var strengths = drugAutocomp.getItemExtraData(drugName)['STRENGTHS_AND_FORMS'];
       var rxcui = drugAutocomp.getItemExtraData(drugName)['RXCUIS'];
 
-      console.log (strengths);
+      console.log(strengths);
       if (strengths) {
-        $('#dosage')[0].autocomp.setListAndField(strengths, rxcui);
+        $('#drug-strengths')[0].autocomp.setListAndField(strengths, rxcui);
       }
     });
-    Def.Autocompleter.Event.observeListSelections('dosage', function(data) {
+    Def.Autocompleter.Event.observeListSelections('drug-strengths', function (data) {
       console.log(data);
       NIHDrugDosage = data.final_val;
       NIHRxCUI = data.item_code
@@ -188,19 +201,12 @@
       var drugRxCUI = NIHRxCUI;
       // add the drug to the user's profile
       console.log(drugName, drugDosage, drugFrequency, drugRxCUI);
-      addDrug(drugName, drugDosage, drugFrequency, drugRxCUI);
-      $("#drugName").val('');
-      $("#dosage").val('');
+      //addDrug(drugName, drugDosage, drugFrequency, drugRxCUI);
+      $("#rxterms").val('');
+      $("#drug-strengths").val('');
       $("#drug-frequency").val('');
     });
-
-    $(document).ready(function () {
-      checkLoginStatus("create");
-    });
-
   </script>
-
-
 </body>
 
 </html>
