@@ -2,24 +2,37 @@
 <html lang="en">
 
 <head>
-  <title>MedME</title>
+  <title>MedMe</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Comfortaa:300" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- MedMe Styles -->
   <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+  <!-- MeMe Scripts -->
+  <script>
+    var page = 'About';
+  </script>
+  <script src="assets/javascript/medme-firebase.js"></script>
+  <!-- NIH drug lookup -->
   <link href='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQueryUI.min.css'
     rel="stylesheet">
-
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
   <nav class="navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -28,22 +41,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#about">ABOUT</a>
-          </li>
-          <li>
-            <a href="tryusout.html">TRY US OUT</a>
-          </li>
-          <li>
-            <a href="signin.html">SIGN IN</a>
-          </li>
-          <li>
-            <a href="myprofile.html">MY PROFILE</a>
-          </li>
+          <li class="menu-about-link"></li>
+          <li class="menu-profile-link"></li>
+          <li class="menu-signinout-link"></li>
         </ul>
       </div>
     </div>
@@ -51,16 +54,16 @@
 
   <div class="jumbotron text-center">
     <img src="assets/images/logo2.png" alt="LOGO">
-    </a>
     <p id="quote">
-      <i>"We make managing your <span id="medication">medication</span> easier!"</i>
+      <i>"We make managing your
+        <span id="medication">medication</span> easier!"</i>
     </p>
 
     <form id="inputMedForm">
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
           <div class="input-group">
-            <input type="text" id="med" class="form-control" placeholder="Enter your medication here! --- Tylenol, Lipitor, etc..." />
+            <input type="text" id="med" class="form-control" placeholder="Find your medication here! --- Tylenol, Lipitor, etc..." />
             <span class="input-group-btn">
               <button class="btn btn-primary btn-sm" type="button" onclick="myFunction()">Submit</button>
             </span>
@@ -74,9 +77,8 @@
       <div class="join-here">
         <div class="input-group-btn">
           <p>Sign up for a FREE account and start tracking today!
-            <a class="btn btn-primary btn-lg" href="tryusout.html">Try us Out!</a>
+            <a class="btn btn-primary btn-lg" href="signin.html">Try us Out!</a>
           </p>
-
         </div>
       </div>
     </form>
@@ -110,11 +112,11 @@
   </div>
 
   <script src='https://clin-table-search.lhc.nlm.nih.gov/autocomplete-lhc-versions/10.1.0/autocomplete-lhc_jQuery.min.js'></script>
-  <script src="assets/javascript/medme.js"></script>
 
   <script>
     new Def.Autocompleter.Search('med',
       'https://clin-table-search.lhc.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS,RXCUIS');
+
     function myFunction() {
       var med = document.getElementById("med").value;
       var medspan = document.getElementById("medspan");
