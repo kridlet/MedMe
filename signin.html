@@ -36,14 +36,13 @@
     #registration {
       margin-left: 200px;
     }
-    #sign-in{
+
+    #sign-in {
       float: right;
-      margin-right:200px;
+      margin-right: 200px;
     }
 
-    fieldset {
-
-    }
+    fieldset {}
 
     .text-input,
     .text-input-small {
@@ -55,18 +54,18 @@
       font-style: bold;
       text-align: center
     }
-    h3{
+
+    h3 {
       margin-left: 140px;
     }
 
     p {
       font-size: 10px;
     }
-    #registration{
-      float:left;
-    }
 
-    
+    #registration {
+      float: left;
+    }
   </style>
 </head>
 
@@ -105,7 +104,7 @@
     <div class="form-group" id="update-user-profile">
 
       <fieldset>
-          <h3>Register Account</h3>
+        <h3>Register Account</h3>
 
 
         <label class="control-label" for="email">Email:</label>
@@ -117,7 +116,7 @@
           placeholder="6-10 characters" required>
 
         <label class="control-label" for="password-confirm">Confirm Password</label>
-        <input class="form-control text-input" id="passwordConf" name="passConf" type="password" required>
+        <input class="form-control text-input" id="passwordConf" name="passConf" type="password" onblur="validation()" required>
 
         <label class="control-label" for="first-name">First Name:</label>
         <input class="form-control text-input" id="first-name" name="firstname" required>
@@ -155,12 +154,12 @@
     </div>
   </form>
 
-  
+
 
   <form id="sign-in" method="post">
     <div class="form-group" id="update-user-profile">
       <fieldset>
-          <h3>Sign In</h3>
+        <h3>Sign In</h3>
 
         <!-- <legend>Sign In</legend> -->
 
@@ -194,9 +193,19 @@
       </div>
     </div>
   </div>
-
+  <script>
+    function validation() {
+      var password = $("#password").val();
+      var password2 = $("#passwordConf").val();
+      if (password != password2) {
+        $("#passwordConf").val("");
+        $(".alert-area").html("<div class='alert alert-danger fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>Passwords do not match. Please try again</div>");
+      }
+      else {
+        $(".alert-area").html("");
+      }
+    }
+  </script>
 </body>
 
 </html>
-
-<!-- mw@email.com  Password!1 -->

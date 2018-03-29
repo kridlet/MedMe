@@ -35,11 +35,9 @@ We may not need to list all these, but I added them for the time being
 •	Bootstrap
 •	Google Map API
 •	NIH (National Institute for Health) API for the drug Interactions and auto-completer
-•	Federal Drug Administration (FDA) API
-•	Med API (NEED THE NAME OF THIS)
-•	Firebase
-•	Twilio
-•	jQuery Validation Plugin v1.17.0
+•	Federal Drug Administration (FDA) API for drug side effects
+•	Firebase for data storage and authentication
+•	Twilio for reminder text messages
 
 Direction for Future Development:
 
