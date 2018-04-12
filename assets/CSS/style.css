@@ -163,6 +163,10 @@ h5 {
     color: white;
 }
 
+.navbar-nav>li>a{
+    color: white;
+}
+
 .panel-footer h3 {
     font-size: 32px;
 }
@@ -232,23 +236,6 @@ footer .glyphicon {
     -webkit-animation: spin2 1s infinite linear;
 }
 
-@keyframes spin {
-    from {
-        transform: scale(1) rotate(0deg);
-    }
-    to {
-        transform: scale(1) rotate(360deg);
-    }
-}
-
-@keyframes spin2 {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-    }
-}
 
 .btn.pill {
     -webkit-border-radius: 16px;
@@ -275,6 +262,17 @@ footer .glyphicon {
      font-style: italic;
      
  }
+ #medication{
+    font-family: 'Comfortaa:300', cursive;  
+    font-size:30px; 
+    color:#fBEEC1;
+ }
+ #quote{
+    font-family: 'Comfortaa:300', cursive; 
+    color:black;
+    font-size:30px;
+    
+}
  #label{
      font-weight: bold;
      color: black;
@@ -283,3 +281,20 @@ footer .glyphicon {
      border-spacing: 1px;
      padding: 10px;
  }
+ 
+ @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+  }
