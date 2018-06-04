@@ -1,7 +1,9 @@
-# MedMe
-Project Development
+# :hospital: MedMe
 
-Application Concept:
+### Link to App
+* <strong>[MedMe](https://kridlet.github.io/MedMe/)</strong>
+
+### Application Concept:
 Taking medications is serious business.  It is critical to take prescribed medicine regularly and on time.  If the wrong dose is taken, or the recommended dose is taken at the wrong time; health problems and adverse reactions can result.  This problem can further compound itself when taking multiple medications.  
 
 Matt McCarthy works with Seniors teaching them computer skills.  He sees firsthand the frustration and complexity that population has with managing their medications.  
@@ -14,7 +16,7 @@ Once a user creates a profile, they can store and manage all their medication in
 
 When using MedMe you can be confident you are doing exactly what your doctor wants you to do.  MedMe is committed to help you live an active and healthy life, because if you are dead, you are no longer useful to us.
 
-Design Process:
+### Design Process:
 We began the process by brainstorming ideas for an app.  We ended with 3 or 4 ideas.  We chose MedMe because of its’ practicality and purposefulness.  
 
 Our first attempt at designing this application focused on how we would lure a user into finding out more about our service.  We posed a question about any of the drugs they are taking to lead them to a page where we could provide more information about other drugs they may also take.  Then we determined if we could ask the user when they take their meds, we could create an alert system to send a text message at the appointed time.
@@ -29,9 +31,8 @@ Another example, is storing all the user data and putting that data on a separat
 
 Perhaps the most challenging part was coordinating everyone’s individual contributions into GitHub.  Everyone’s work was too closely linked together to make clean merge and pull requests.  If we had to do it all over again, we may just skip GitHub until the end and share work through file exchanges using Slack.  All in all, we worked well together, and everyone was committed to making it work, and worked their tails off pursuant to that goal.
 
-Technologies:
+### Technologies:
 
-We may not need to list all these, but I added them for the time being
 •	Bootstrap
 •	Google Map API
 •	NIH (National Institute for Health) API for the drug Interactions and auto-completer
@@ -39,10 +40,9 @@ We may not need to list all these, but I added them for the time being
 •	Firebase for data storage and authentication
 •	Twilio for reminder text messages
 
-Direction for Future Development:
+### Direction for Future Development:
 
-•	Continue to debug existing code.  This includes code comments and code appearance.  Currently our html, css and js are jumbled about.
-•	Sell ad space?
+•	Continue to debug existing code.  This includes code comments.  Currently our html, css and js are jumbled about.
 •	Create an information share forum so people can connect with others who are taking the same medications.
 •	Include a health blog with regular contributions from thought leaders in the field of pharmacology.
 •	Create a delivery service for prescriptions.
