@@ -33,19 +33,19 @@ Perhaps the most challenging part was coordinating everyone’s individual contr
 
 ### Technologies:
 
-•	Bootstrap
-•	Google Map API
-•	NIH (National Institute for Health) API for the drug Interactions and auto-completer
-•	Federal Drug Administration (FDA) API for drug side effects
-•	Firebase for data storage and authentication
-•	Twilio for reminder text messages
+*	Bootstrap
+*	Google Map API
+*	NIH (National Institute for Health) API for the drug Interactions and auto-completer
+*	Federal Drug Administration (FDA) API for drug side effects
+*	Firebase for data storage and authentication
+*	Twilio for reminder text messages
 
 ### Direction for Future Development:
 
-•	Continue to debug existing code.  This includes code comments.  Currently our html, css and js are jumbled about.
-•	Create an information share forum so people can connect with others who are taking the same medications.
-•	Include a health blog with regular contributions from thought leaders in the field of pharmacology.
-•	Create a delivery service for prescriptions.
-•	Compare pharmacy prices and allow users to rate pharmacies and leave written reviews.
+*	Continue to debug existing code.  This includes code comments.  Currently our html, css and js are jumbled about.
+*	Create an information share forum so people can connect with others who are taking the same medications.
+*	Include a health blog with regular contributions from thought leaders in the field of pharmacology.
+*	Create a delivery service for prescriptions.
+*	Compare pharmacy prices and allow users to rate pharmacies and leave written reviews.
 
 
