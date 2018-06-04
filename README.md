@@ -10,7 +10,7 @@ This app is the work of 4 developers:
 * <strong>[MedMe](https://kridlet.github.io/MedMe/)</strong>
 
 ### Screenshot
-![Full Size](assets/images/medme.png)
+![Full Size](https://github.com/kridlet/MedMe/blob/master/assets/images/medme.png)
 
 ### Application Concept:
 Taking medications is serious business.  It is critical to take prescribed medicine regularly and on time.  If the wrong dose is taken, or the recommended dose is taken at the wrong time; health problems and adverse reactions can result.  This problem can further compound itself when taking multiple medications.  
