@@ -1,5 +1,11 @@
 # :hospital: MedMe
 
+This app is the work of 4 developers: 
+* <strong>[Dirk Wiggins](https://github.com/kridlet)</strong>, 
+* <strong>[Matt McCarthy](https://github.com/mccartmz)</strong>, 
+* <strong>[Joe McCreesh](https://github.com/jmccreesh)</strong>, 
+* <strong>[Matthew Wright](https://github.com/Mjohnwright)</strong>
+
 ### Link to App
 * <strong>[MedMe](https://kridlet.github.io/MedMe/)</strong>
 
