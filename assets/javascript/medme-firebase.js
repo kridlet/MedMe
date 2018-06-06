@@ -42,22 +42,26 @@ $(function () {
     });
 });
 
-function addDrug(drugName, drugDosage, drugFrequency, drugDuration, lastDoseTime, RxCUI) {
+function addDrug(drugName, drugDosage, drugFrequency, alertTime, drugDuration, lastDoseTime, RxCUI) {
     // add a new drug to the user
     database.ref('users/' + auth.currentUser.uid + '/rx').push().set({
         name: drugName,
         dosage: drugDosage,
         frequency: drugFrequency,
+        alert: alertTime, // **********************  HOW IS IS PICKING UP the html??????????
         duration: drugDuration,
         lastDoseTime : lastDoseTime,
         RxCUI: RxCUI,
     });
     if (drugFrequency === "As Needed") {
         $(".alert-area").html("<div class='alert alert-success fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>" + drugName + " was successfully added.</div>");
-    } else {
+    }  
+    
+    else {
         $(".alert-area").html("<div class='alert alert-success fade in alert-dismissible'><a href='#' class='close' data-dismiss='alert'>&times;</a>" + drugName + " was successfully added. You will receive text messages to help you remember when to take your medicine.</div>");
     }
-}
+    }
+
 
 function createAccountAndLogin(email, password, firstName, lastName, address, city, state, zip, phone, termsAccepted) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
