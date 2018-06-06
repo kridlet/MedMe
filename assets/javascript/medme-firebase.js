@@ -81,17 +81,6 @@ function createAccountAndLogin(email, password, firstName, lastName, address, ci
     });
 }
 
-// watch for add drug request
-// $("#btn-add-drug").click(function () {
-//     // get drug details from user input
-//     var drugName = $("#drug-name").val();
-//     var drugDosage = $("#drug-dosage").val();
-//     var drugFrequency = $("#drug-frequency").val();
-//     var RxCUI = $("#RxCUI").val();
-//     // add the drug to the user's profile
-//     addDrug(drugName, drugDosage, drugFrequency, RxCUI);
-// });
-
 //watch for profile submit, at which time we generate a credentialed account
 $(document).on('submit', '#registration', function (event) {
     console.log("button");

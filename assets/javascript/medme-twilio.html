@@ -30,25 +30,13 @@
     var auth = firebase.auth();
     var twilioSid = "";
     var twilioToken = "";
+    var twilioFromPhoneNumber = '';
     var authData = btoa(twilioSid + ':' + twilioToken);
 
-
     var email = "MEDME-ADMIN-30edcioi3KIESiw03@Djdj34jdSJ38dmK148J.INFO";
-    var password = "fh849*#hbBA(485JDU(#bfekq2j948rdj3JHu3*84J"
+    var password = "fh849*#hbBA(485JDU(#bfekq2j948rdj3JHu3*84J" // account able to read full user branch
     // log the user in
     firebase.auth().signInWithEmailAndPassword(email, password)
-
-
-    // watch for login/logout events
-    auth.onAuthStateChanged(function (user) {
-        if (user) {
-            // do things when logged in, like show the logout button and hide the login button
-            console.log("I am: " + user.email);
-        } else {
-            // do things when logged out, like show the login button and hide the logout button
-            console.log("I am: no one");
-        }
-    });
 
     var query = database.ref('users').orderByKey();
     query.once("value", function (userSnapshot) {
@@ -66,7 +54,7 @@
                             " - you're due to take your " + drugs.val().name +
                             ". Respond 1 when you take your dose.",
                         To: phone,
-                        From: '+12158834229 '
+                        From: twilioFromPhoneNumber
                     },
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
